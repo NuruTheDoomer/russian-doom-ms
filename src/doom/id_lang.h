@@ -1052,7 +1052,7 @@ extern patch_t *stysslsh;
 
 
 // -----------------------------------------------------------------------------
-// Русский язык
+// Terjemahan Bahasa Melayu
 // -----------------------------------------------------------------------------
 
 
@@ -1060,83 +1060,83 @@ extern patch_t *stysslsh;
 // AM_map.C
 //
 
-#define AMSTR_FOLLOWON_RUS      "ht;bv cktljdfybz drk.xty"  // Режим следования включен
-#define AMSTR_FOLLOWOFF_RUS     "ht;bv cktljdfybz dsrk.xty" // Режим следования выключен
-#define AMSTR_GRIDON_RUS        "ctnrf drk.xtyf"            // Сетка включена
-#define AMSTR_GRIDOFF_RUS       "ctnrf jnrk.xtyf"           // Сетка выключена
-#define AMSTR_MARK_RUS          "jnvtnrf"                   // Отметка
-#define AMSTR_ADDED_RUS         "lj,fdktyf"                 // Добавлена
-#define AMSTR_CLEARED_RUS       "elfktyf"                   // Удалена
-#define AMSTR_MARKSCLEARED_RUS  "dct jnvtnrb elfktys"       // Все отметки удалены
-#define AMSTR_OVERLAYON_RUS     "ht;bv yfkj;tybz drk.xty"   // Режим наложения включен
-#define AMSTR_OVERLAYOFF_RUS    "ht;bv yfkj;tybz dsrk.xty"  // Режим наложения выключен
-#define AMSTR_ROTATEON_RUS      "ht;bv dhfotybz drk.xty"    // Режим вращения включен
-#define AMSTR_ROTATEOFF_RUS     "ht;bv dhfotybz dsrk.xty"   // Режим вращения выключен
+#define AMSTR_FOLLOWON_RUS      "Mod Ikut BUKA"
+#define AMSTR_FOLLOWOFF_RUS     "Mod Ikut TUTUP"
+#define AMSTR_GRIDON_RUS        "Grid BUKA"
+#define AMSTR_GRIDOFF_RUS       "Grid TUTUP"
+#define AMSTR_MARK_RUS          "Titik Ditanda"
+#define AMSTR_ADDED_RUS         "Ditambah"
+#define AMSTR_CLEARED_RUS       "Dihapus"
+#define AMSTR_MARKSCLEARED_RUS  "Semua Titik Dihapus"
+#define AMSTR_OVERLAYON_RUS     "Mod Tindanan BUKA"
+#define AMSTR_OVERLAYOFF_RUS    "Mod Tindanan TUTUP"
+#define AMSTR_ROTATEON_RUS      "Mod Putar BUKA"
+#define AMSTR_ROTATEOFF_RUS     "Mod Putar TUTUP"
 
 
 // CT_chat.c
-#define TXT_NOPLAYERS_RUS       "D BUHT YTN LHEUB[ BUHJRJD!" // В ИГРЕ НЕТ ДРУГИХ ИГРОКОВ!
+#define TXT_NOPLAYERS_RUS       "TIADA PEMAIN LAIN DALAM PERMAINAN!"
 
 
 //
 // D_Main.C
 //
 
-#define D_DEVSTR_RUS    "Активирован режим разработчика.\n"
-#define D_CDROM_RUS     "Дисковая версия: файлы конфигурации сохранятся в папке c:\\doomdata\n"
+#define D_DEVSTR_RUS    "Mod Pembangun BUKA.\n"
+#define D_CDROM_RUS     "Versi CD-ROM: default.cfg dari c:\doomdata\n"
 
 
 //
 // G_game.C
 //
 
-#define GGSAVED_RUS          "buhf cj[hfytyf>"          // Игра сохранена.
-#define GGLOADED_RUS         "buhf pfuhe;tyf>"          // Игра загружена.
+#define GGSAVED_RUS          "Permainan Disimpan."
+#define GGLOADED_RUS         "Permainan Dimuat."
 
 // RD specific
-#define STSTR_ALWRUNON_RUS  "gjcnjzyysq ,tu drk.xty"    // Постоянный бег включен
-#define STSTR_ALWRUNOFF_RUS "gjcnjzyysq ,tu dsrk.xty"   // Постоянный бег выключен
-#define STSTR_MLOOK_ON_RUS  "j,pjh vsim. drk.xty"       // Обзор мышью включен
-#define STSTR_MLOOK_OFF_RUS "j,pjh vsim. dsrk.xty"      // Обзор мышью выключен
-#define STSTR_TESTCTRLS_RUS "ht;bv ghjdthrb eghfdktybz" // Режим проверки управления
-#define STSTR_SCRNSHT_RUS   "crhbyijn"                  // Скриншот
+#define STSTR_ALWRUNON_RUS  "Mod Sentiasa Lari BUKA"
+#define STSTR_ALWRUNOFF_RUS "Mod Sentiasa Lari TUTUP"
+#define STSTR_MLOOK_ON_RUS  "Mod Pandangan Bebas BUKA"
+#define STSTR_MLOOK_OFF_RUS "Mod Pandangan Bebas TUTUP"
+#define STSTR_TESTCTRLS_RUS "Tekan esc untuk keluar"
+#define STSTR_SCRNSHT_RUS   "Gambar layar ditangkap"
 
 
 //
 // M_Menu.C
 //
 
-#define STSTR_CROSSHAIR_ON_RUS  "ghbwtk drk.xty"    // Прицел включен
-#define STSTR_CROSSHAIR_OFF_RUS "ghbwtk dsrk.xty"   // Прицел выключен
+#define STSTR_CROSSHAIR_ON_RUS  "Crosshair BUKA"
+#define STSTR_CROSSHAIR_OFF_RUS "Crosshair TUTUP"
 
-#define PRESSKEY_RUS    "(yf;vbnt k.,e. rkfdbie)"   // (Нажмите любую клавишу)
-#define PRESSYN_RUS     "(yf;vbnt ^#^ bkb ^@^)"     // (Нажмите "Y" или "N")
-#define DOSY_RUS        "(yf;vbnt ^#^ xnj,s dsqnb)" // (Нажмите "Y" чтобы выйти)
+#define PRESSKEY_RUS    "Tekan mana-mana kekunci"
+#define PRESSYN_RUS     "Tekan Y atau N"
+#define DOSY_RUS        "Tekan Y untuk keluar"
 
-#define QUITMSG_RUS     "ds ltqcndbntkmyj ]jnbnt dsqnb\nbp 'njq pfvtxfntkmyjq buhs?"                // Вы действительно хотите выйти \n из этой замечательной игры?
-#define LOADNET_RUS     "ytdjpvj;yj pfuhepbnm cj[hfytyye.\nbuhe d ctntdjq buht!\n\n"PRESSKEY_RUS    // Невозможно загрузить сохраненую \n игру в сетевой игре!
-#define QLOADNET_RUS    "ytdjpvj;yj pfuhepbnm ,scnhjt\ncj[hfytybt d ctntdjq buht!\n\n"PRESSKEY_RUS  // Невозможно загрузить быстрое \n сохранение в сетевой игре!
-#define QSAVESPOT_RUS   "e dfc yt ds,hfy ckjn ,scnhjuj cj[hfytybz!\n\n"PRESSKEY_RUS                 // У Вас не выбран слот быстрого сохранения!
-#define SAVEDEAD_RUS    "ytdjpvj;yj cj[hfybnm buhe< yt yfxfd tt!\n\n"PRESSKEY_RUS                   // Невозможно сохранить игру, не начав её!
-#define QSPROMPT_RUS    "gthtpfgbcfnm ,scnhjt cj[hfytybt\n^%s^?\n\n"PRESSKEY_RUS                    // quicksave over your game named\n\n'%s'?\n\n
-#define QLPROMPT_RUS    "pfuhepbnm ,scnhjt cj[hfytybt\n^%s^?\n\n"PRESSKEY_RUS                       // do you want to quickload the game named\n'%s'?\n\n
+#define QUITMSG_RUS     "adakah anda pasti anda mahu\nkeluar dari permainan yang\nhebat ini?"
+#define LOADNET_RUS     "anda tidak boleh memuat sewaktu\ndalam permainan rangkaian!\n\n"PRESSKEY_RUS
+#define QLOADNET_RUS    "anda tidak boleh memuat pantas sewaktu\ndalam permainan rangkaian!\n\n"PRESSKEY_RUS
+#define QSAVESPOT_RUS   "anda belum memilih slot simpan pantas lagi!\n\n"PRESSKEY_RUS
+#define SAVEDEAD_RUS    "anda tidak boleh menyimpan jika anda tidak bermain!\n\n"PRESSKEY_RUS
+#define QSPROMPT_RUS    "simpan pantas pada slot\nanda yang dinamakan\n\n'%s'?\n\n"PRESSKEY_RUS
+#define QLPROMPT_RUS    "adakah anda mahu memuat pantas\nslot yang dinamakan\n\n'%s'\n\n"PRESSKEY_RUS
 
-#define RD_ON_RUS       "drk"       // вкл
-#define RD_OFF_RUS      "dsrk"      // выкл
-#define RD_NEXT_RUS     "lfktt \\"   // далее >
-#define RD_PREV_RUS     "/ yfpfl"   // < назад
+#define RD_ON_RUS       "Buka"       // вкл
+#define RD_OFF_RUS      "Tutup"      // выкл
+#define RD_NEXT_RUS     "Seterusnya >"   // далее >
+#define RD_PREV_RUS     "< Sebelumnya"   // < назад
 
 // Невозможно начать новую игру
 // при активной сетевой игре.
 #define NEWGAME_RUS             \
-"ytdjpvj;yj yfxfnm yjde. buhe\n"\
-"ghb frnbdyjq ctntdjq buht>\n\n"PRESSKEY_RUS 
+"anda tidak boleh memulakan permainan\n"\
+"baharu ketika berada dalam permainan\n"\
+rangkaian.\n\n"PRESSKEY
 
-// Уверены? этот уровень сложности
-// даже не близок к честному.
 #define NIGHTMARE_RUS              \
-"edthtys? 'njn ehjdtym ckj;yjcnb\n"\
-"lf;t yt ,kbpjr r xtcnyjve>\n\n"PRESSYN_RUS 
+"adakah anda pasti? tahap kesukaran\n"\
+"ini tidaklah adil sama sekali\n\n"PRESSYN_RUS 
+
 
 // Монстры не воскрешаются, однако
 // их скорость и степень наносимого 
@@ -1152,18 +1152,18 @@ extern patch_t *stysslsh;
 // Это демонстрационная версия игры.
 // Вам необходимо приобрести всю трилогию.
 #define SWSTRING_RUS                   \
-"'nj ltvjycnhfwbjyyfz dthcbz buhs>\n\n"\
-"dfv ytj,[jlbvj ghbj,htcnb dc. nhbkjub.>\n\n"PRESSKEY_RUS 
+"ini adalah versi shareware doom\n\n"\
+"anda perlu memesan trilogi penuh.\n\n"PRESSKEY_RUS 
 
-#define MSGOFF_RUS  "cjj,otybz dsrk.xtys"                                   // Сообщения выключены
-#define MSGON_RUS   "cjj,otybz drk.xtys"                                    // Сообщения включены
-#define NETEND_RUS  "ytdjpvj;yj pfrjyxbnm ctntde. buhe!\n\n"PRESSKEY_RUS        // Невозможно закончить сетевую игру!
-#define ENDGAME_RUS "ds ltqcndbntkmyj [jnbnt pfrjyxbnm buhe?\n\n"PRESSYN_RUS    // Вы действительно хотите закончить игру?
+#define MSGOFF_RUS  "Mesej TUTUP"
+#define MSGON_RUS   "Mesej BUKA"
+#define NETEND_RUS  "permainan rangkaian tidak boleh ditamatkan!\n\n"PRESSKEY_RUS
+#define ENDGAME_RUS "anda pasti anda mahu menamatkan permainan?\n\n"PRESSYN_RUS
 
-#define DETAILHI_RUS    "dscjrfz ltnfkbpfwbz ajyf"   // Высокая детализация фона
-#define DETAILLO_RUS    "ybprfz ltnfkbpfwbz ajyf"    // Низкая детализация фона
+#define DETAILHI_RUS    "Kualiti Latar Belakang Tinggi"
+#define DETAILLO_RUS    "Kualiti Latar Belakang Rendah"
 
-#define GAMMA_LEVEL_RUS         "ehjdtym ufvvf-rjhhtrwbb "  // Уровень гамма-коррекции
+#define GAMMA_LEVEL_RUS         "Tahap pembetulan gama "
 
 
 
@@ -1184,12 +1184,12 @@ extern patch_t *stysslsh;
 //
 
 // armor
-#define GOTARMOR_RUS    "gjkextyf ,hjyz>"           // Получена броня.
-#define GOTMEGA_RUS     "gjkextyf vtuf,hjyz!"       // Получена мегаброня!
+#define GOTARMOR_RUS    "Dapat zirah ketahanan tahap 1."
+#define GOTMEGA_RUS     "Dapat zirah ketahanan tahap 2."
 
 // bonus items
-#define GOTHTHBONUS_RUS "gjkexty ,jyec pljhjdmz>"       // Получен бонус здоровья.
-#define GOTARMBONUS_RUS "gjkexty ,jyec ,hjyb>"          // Получен бонус брони.
+#define GOTHTHBONUS_RUS "Dapat sebotol posyen penyembuh."       // Получен бонус здоровья.
+#define GOTARMBONUS_RUS "Dapat sebuah ketopong ketahanan."          // Получен бонус брони.
 #define GOTSCEPTRE_RUS  "gjkexty lmzdjkmcrbq crbgtnh>"  // Получен дьявольский скипетр.
 #define GOTBIBLE_RUS    "gjkextyf ytxtcnbdfz ,b,kbz>"   // Получена нечестивая Библия.
 #define GOTSUPER_RUS    "cdth[pfhzl!"                   // Сверхзаряд!
@@ -1199,17 +1199,17 @@ extern patch_t *stysslsh;
 #define GOTCHEST_RUS        "gjkexty ceyler c xthtgfvb>"        // Получен сундук с черепами.
 #define GOTEXTRALIFE_RUS    "gjkextyf ljgjkybntkmyfz ;bpym!"    // Получена дополнительная жизнь!
 
-#define GOTBLUECARD_RUS "gjkextyf cbyzz rk.x-rfhnf>"    // Получена синяя ключ-карта.
-#define GOTYELWCARD_RUS "gjkextyf ;tknfz rk.x-rfhnf>"   // Получена желтая ключ-карта
-#define GOTREDCARD_RUS  "gjkextyf rhfcyfz rk.x-rfhnf>"  // Получена красная ключ-карта.
-#define GOTBLUESKUL_RUS "gjkexty cbybq rk.x-xthtg>"     // Получен синий ключ-череп.
-#define GOTYELWSKUL_RUS "gjkexty ;tknsq rk.x-xthtg>"    // Получен желтый ключ-череп.
-#define GOTREDSKULL_RUS "gjkexty rhfcysq rk.x-xthtg>"   // Получен красный ключ-череп.
+#define GOTBLUECARD_RUS "Dapat kad kunci biru."    // Получена синяя ключ-карта.
+#define GOTYELWCARD_RUS "Dapat kad kunci kuning."   // Получена желтая ключ-карта
+#define GOTREDCARD_RUS  "Dapat kad kunci merah."  // Получена красная ключ-карта.
+#define GOTBLUESKUL_RUS "Dapat kunci tengkorak biru."     // Получен синий ключ-череп.
+#define GOTYELWSKUL_RUS "Dapat kunci tengkorak kuning."    // Получен желтый ключ-череп.
+#define GOTREDSKULL_RUS "Dapat kunci tengkorak merah."   // Получен красный ключ-череп.
 
 // medikits, heals
-#define GOTSTIM_RUS     "gjkexty cnbvekznjh>"                   // Получен стимулятор.
-#define GOTMEDINEED_RUS "gjkextyf rhfqyt ytj,[jlbvfz fgntxrf!"  // Получена крайне необходимая аптечка!
-#define GOTMEDIKIT_RUS  "gjkextyf fgntxrf>"                     // Получена аптечка.
+#define GOTSTIM_RUS     "Dapat sekotak pek penyembuh kecil."                   // Получен стимулятор.
+#define GOTMEDINEED_RUS "Fuh, nasib baik dapat pek penyembuh ni!"  // Получена крайне необходимая аптечка!
+#define GOTMEDIKIT_RUS  "Dapat sekotak pek penyembuh besar."                     // Получена аптечка.
 
 // power ups
 #define GOTINVUL_RUS    "ytezpdbvjcnm!"                 // Неуязвимость!
@@ -1246,7 +1246,7 @@ extern patch_t *stysslsh;
 // P_Spec.C
 //
 
-#define SECRETFOUND_RUS "j,yfhe;ty nfqybr!"     // Обнаружен тайник!
+#define SECRETFOUND_RUS "Sebuah rahasia ditemui!"
 
 
 //
