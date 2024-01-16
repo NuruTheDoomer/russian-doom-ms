@@ -1805,7 +1805,7 @@ static void M_RD_Draw_Rendering_1 (void)
         }
         else
         {
-            RD_M_DrawTextSmallRUS(vsync ? "drk" : "dsrk", 249 + wide_delta, 65, CR_NONE);
+            RD_M_DrawTextSmallRUS(vsync ? "drk" : "tutup", 249 + wide_delta, 65, CR_NONE);
         }
 
         // Ограничение FPS
@@ -1821,7 +1821,7 @@ static void M_RD_Draw_Rendering_1 (void)
 
         // Счетчик производительности
         RD_M_DrawTextSmallRUS(show_fps == 1 ? "" : // Print as US string below
-                              show_fps == 2 ? "gjkysq" : "dsrk",
+                              show_fps == 2 ? "gjkysq" : "tutup",
                               246 + wide_delta, 85, CR_NONE);
         // Print "FPS" separately, RU sting doesn't fit in 4:3 aspect ratio :(
         if (show_fps == 1) RD_M_DrawTextSmallENG("fps", 246 + wide_delta, 85, CR_NONE);
@@ -1833,11 +1833,11 @@ static void M_RD_Draw_Rendering_1 (void)
         }
         else
         {
-            RD_M_DrawTextSmallRUS(smoothing ? "drk" : "dsrk", 219 + wide_delta, 95, CR_NONE);
+            RD_M_DrawTextSmallRUS(smoothing ? "drk" : "tutup", 219 + wide_delta, 95, CR_NONE);
         }
 
         // Изменение палитры краёв экрана
-        RD_M_DrawTextSmallRUS(vga_porch_flash ? "drk" : "dsrk", 274 + wide_delta, 105, CR_NONE);
+        RD_M_DrawTextSmallRUS(vga_porch_flash ? "drk" : "tutup", 274 + wide_delta, 105, CR_NONE);
 
         // Угасание освещения
         RD_M_DrawTextSmallRUS(smoothlight ? "gkfdyjt" : "jhbubyfkmyjt", 186 + wide_delta, 115, CR_NONE);
@@ -1924,7 +1924,7 @@ static void M_RD_Draw_Rendering_2 (void)
     else
     {
         // Окно с рамкой
-        RD_M_DrawTextSmallRUS(window_border ? "drk" : "dsrk", 140 + wide_delta, 35, CR_NONE);
+        RD_M_DrawTextSmallRUS(window_border ? "drk" : "tutup", 140 + wide_delta, 35, CR_NONE);
 
         // Размер окна
         RD_M_DrawTextSmallENG(window_size, 128 + wide_delta, 45, fullscreen ? CR_DARKRED : CR_NONE);
@@ -1949,7 +1949,7 @@ static void M_RD_Draw_Rendering_2 (void)
         RD_M_DrawTextSmallRUS(window_title_short ? "rhfnrbq" : "gjlhj,ysq", 151 + wide_delta, 55, CR_NONE);
 
         // Поверх других окон
-        RD_M_DrawTextSmallRUS(window_ontop ? "drk" : "dsrk", 182 + wide_delta, 65, CR_NONE);
+        RD_M_DrawTextSmallRUS(window_ontop ? "drk" : "tutup", 182 + wide_delta, 65, CR_NONE);
 
         // Пропорции окна
         RD_M_DrawTextSmallRUS(preserve_window_aspect_ratio  ? "abrcbhjdfyyst" : "cdj,jlyst", 152 + wide_delta, 75, CR_NONE);
@@ -1957,19 +1957,19 @@ static void M_RD_Draw_Rendering_2 (void)
         // Отображать значок дискеты
         RD_M_DrawTextSmallRUS(show_diskicon == 1 ? "cybpe" :
                               show_diskicon == 2 ? "cdth[e" :
-                              "dsrk", 241 + wide_delta, 95, CR_NONE);
+                              "tutup", 241 + wide_delta, 95, CR_NONE);
 
         // Эффект смены экранов
         RD_M_DrawTextSmallRUS(screen_wiping == 1 ? "cnfylfhnysq" :
                               screen_wiping == 2 ? "pfuheprf" :
-                              "dsrk", 202 + wide_delta, 105, CR_NONE);
+                              "tutup", 202 + wide_delta, 105, CR_NONE);
 
         // Формат скриншотов
         RD_M_DrawTextSmallENG(png_screenshots ? "png" : "pcx", 180 + wide_delta, 115, CR_NONE);
 
         // Показывать экран ENDOOM
         RD_M_DrawTextSmallENG("ENDOOM:", 165 + wide_delta, 125, CR_NONE);
-        RD_M_DrawTextSmallRUS(show_endoom ? "drk" : "dsrk", 222 + wide_delta, 125, CR_NONE);
+        RD_M_DrawTextSmallRUS(show_endoom ? "drk" : "tutup", 222 + wide_delta, 125, CR_NONE);
 
         //
         // Footer
@@ -2298,7 +2298,7 @@ static void M_RD_Draw_Colors(void)
         RD_M_DrawTextSmallRUS("ufvvf", 105 + wide_delta, 35, CR_NONE);        // Гамма
         RD_M_DrawTextSmallRUS("yfcsotyyjcnm", 46 + wide_delta, 45, CR_NONE);  // Насыщенность
         RD_M_DrawTextSmallRUS("wdtnjdfz gfkbnhf", 22 + wide_delta, 55, CR_NONE);  // Цветовая палитра
-        RD_M_DrawTextSmallRUS(show_palette ? "DRK" : "DSRK", 162 + wide_delta, 55, CR_NONE);
+        RD_M_DrawTextSmallRUS(show_palette ? "BUKA" : "TUTUP", 162 + wide_delta, 55, CR_NONE);
 
         RD_M_DrawTextSmallCenteredRUS("byntycbdyjcnm wdtnf", 65, CR_YELLOW);  // Интенсивность цвета
 
@@ -2486,7 +2486,7 @@ static void M_RD_Draw_MessagesSettings(void)
     else
     {
         // Отображение сообщений
-        RD_M_DrawTextSmallRUS(showMessages ? "drk" : "dsrk", 214 + wide_delta, 35, CR_NONE);
+        RD_M_DrawTextSmallRUS(showMessages ? "drk" : "tutup", 214 + wide_delta, 35, CR_NONE);
 
         // Выравнивание
         RD_M_DrawTextSmallRUS(messages_alignment == 1 ? "gj wtynhe" :             // по центру
@@ -2506,17 +2506,17 @@ static void M_RD_Draw_MessagesSettings(void)
                               "10 ctreyl", 133 + wide_delta, 65, CR_NONE);
 
         // Плавное исчезновение
-        RD_M_DrawTextSmallRUS(message_fade ? "drk" : "dsrk", 198 + wide_delta, 75, CR_NONE);
+        RD_M_DrawTextSmallRUS(message_fade ? "drk" : "tutup", 198 + wide_delta, 75, CR_NONE);
 
         // Тексты отбрасывают тень
-        RD_M_DrawTextSmallRUS(draw_shadowed_text ? "drk" : "dsrk", 226 + wide_delta, 85, CR_NONE);
+        RD_M_DrawTextSmallRUS(draw_shadowed_text ? "drk" : "tutup", 226 + wide_delta, 85, CR_NONE);
 
         // Системное время
         RD_M_DrawTextSmallRUS(local_time == 1 ? "12-xfcjdjt (xx:vv)" :
                               local_time == 2 ? "12-xfcjdjt (xx:vv:cc)" :
                               local_time == 3 ? "24-xfcjdjt (xx:vv)" :
                               local_time == 4 ? "24-xfcjdjt (xx:vv:cc)" :
-                              "dsrk", 161 + wide_delta, 105, CR_NONE);
+                              "tutup", 161 + wide_delta, 105, CR_NONE);
 
         // Получение предметов
         if (gamemission == jaguar)
@@ -2797,23 +2797,23 @@ static void M_RD_Draw_AutomapSettings(void)
         }
 
         // Сглаживание линий
-        RD_M_DrawTextSmallRUS(automap_antialias ? "drk" : "dsrk", 179 + wide_delta, 45,
+        RD_M_DrawTextSmallRUS(automap_antialias ? "drk" : "tutup", 179 + wide_delta, 45,
                               automap_antialias ? CR_GREEN : CR_DARKRED);
 
         // Режим вращения
-        RD_M_DrawTextSmallRUS(automap_rotate ? "drk" : "dsrk", 159 + wide_delta, 55,
+        RD_M_DrawTextSmallRUS(automap_rotate ? "drk" : "tutup", 159 + wide_delta, 55,
                               automap_rotate ? CR_GREEN : CR_DARKRED);
 
         // Режим наложения
-        RD_M_DrawTextSmallRUS(automap_overlay ? "drk" : "dsrk", 168 + wide_delta, 65,
+        RD_M_DrawTextSmallRUS(automap_overlay ? "drk" : "tutup", 168 + wide_delta, 65,
                               automap_overlay ? CR_GREEN : CR_DARKRED);
 
         // Режим следования
-        RD_M_DrawTextSmallRUS(automap_follow ? "drk" : "dsrk", 173 + wide_delta, 95,
+        RD_M_DrawTextSmallRUS(automap_follow ? "drk" : "tutup", 173 + wide_delta, 95,
                               automap_follow ? CR_GREEN : CR_DARKRED);
 
         // Сетка
-        RD_M_DrawTextSmallRUS(automap_grid ? "drk" : "dsrk", 83 + wide_delta, 105,
+        RD_M_DrawTextSmallRUS(automap_grid ? "drk" : "tutup", 83 + wide_delta, 105,
                               automap_grid ? CR_GREEN : CR_DARKRED);
 
         // Размер сетки
@@ -2833,7 +2833,7 @@ static void M_RD_Draw_AutomapSettings(void)
         }
 
         // Подсвечивать тайники
-        RD_M_DrawTextSmallRUS(automap_secrets ? "drk" : "dsrk", 199 + wide_delta, 135,
+        RD_M_DrawTextSmallRUS(automap_secrets ? "drk" : "tutup", 199 + wide_delta, 135,
                               automap_secrets ? CR_GREEN : CR_DARKRED);
 
         //
@@ -2979,31 +2979,31 @@ static void M_RD_Draw_StatsSettings(void)
         // Статистика уровня/фраги
         RD_M_DrawTextSmallRUS(stats_kis == 1 ? "yf rfhnt" :
                               stats_kis == 2 ? "dctulf" :
-                              "dsrk", 224 + wide_delta, 45,
+                              "tutup", 224 + wide_delta, 45,
                               stats_kis ? CR_GREEN : CR_DARKRED);
 
         // Уровень сложности
         RD_M_DrawTextSmallRUS(stats_skill == 1 ? "yf rfhnt" :
                               stats_skill == 2 ? "dctulf" :
-                              "dsrk", 179 + wide_delta, 55,
+                              "tutup", 179 + wide_delta, 55,
                               stats_skill ? CR_GREEN : CR_DARKRED);
 
         // Таймер уровня/дефматч
         RD_M_DrawTextSmallRUS(stats_level_time == 1 ? "yf rfhnt" :
                               stats_level_time == 2 ? "dctulf" :
-                              "dsrk", 210 + wide_delta, 65,
+                              "tutup", 210 + wide_delta, 65,
                               stats_level_time ? CR_GREEN : CR_DARKRED);
 
         // Общее время
         RD_M_DrawTextSmallRUS(stats_total_time == 1 ? "yf rfhnt" :
                               stats_total_time == 2 ? "dctulf" :
-                              "dsrk", 131 + wide_delta, 75,
+                              "tutup", 131 + wide_delta, 75,
                               stats_total_time ? CR_GREEN : CR_DARKRED);
 
         // Координаты игрока
         RD_M_DrawTextSmallRUS(stats_coords == 1 ? "yf rfhnt" :
                               stats_coords == 2 ? "dctulf" :
-                              "dsrk", 178 + wide_delta, 85,
+                              "tutup", 178 + wide_delta, 85,
                               stats_coords ? CR_GREEN : CR_DARKRED);
 
         // Название уровня
@@ -3012,7 +3012,7 @@ static void M_RD_Draw_StatsSettings(void)
                               stats_level_name ? CR_GREEN : CR_DARKRED);
 
         // Окрашивание
-        RD_M_DrawTextSmallRUS(stats_color ? "drk" : "dsrk",
+        RD_M_DrawTextSmallRUS(stats_color ? "drk" : "tutup",
                               133 + wide_delta, 105,
                               stats_color ? CR_GREEN : CR_DARKRED);
 
@@ -3229,10 +3229,10 @@ static void M_RD_Draw_Audio_System(void)
         RD_M_DrawTextSmallRUS(snd_monomode ? "vjyj" : "cnthtj", 231 + wide_delta, 95, CR_NONE);
 
         // Произвольный питч-шифтинг
-        RD_M_DrawTextSmallRUS(snd_pitchshift ? "drk" : "dsrk", 242 + wide_delta, 105, CR_NONE);
+        RD_M_DrawTextSmallRUS(snd_pitchshift ? "drk" : "tutup", 242 + wide_delta, 105, CR_NONE);
 
         // Звук в неактивном окне
-        RD_M_DrawTextSmallRUS(mute_inactive_window ? "dsrk" : "drk", 208 + wide_delta, 115, CR_NONE);
+        RD_M_DrawTextSmallRUS(mute_inactive_window ? "tutup" : "drk", 208 + wide_delta, 115, CR_NONE);
     }
 
     // [JN] Speaker test routine.
@@ -3506,17 +3506,17 @@ static void M_RD_Draw_Controls(void)
     else
     {
         // Режим постоянного бега
-        RD_M_DrawTextSmallRUS(alwaysRun ? "drk" : "dsrk", 219 + wide_delta, 55, CR_NONE);
+        RD_M_DrawTextSmallRUS(alwaysRun ? "drk" : "tutup", 219 + wide_delta, 55, CR_NONE);
 
         // Обзор мышью
-        RD_M_DrawTextSmallRUS(mlook ? "drk" : "dsrk", 135 + wide_delta, 135, CR_NONE);
+        RD_M_DrawTextSmallRUS(mlook ? "drk" : "tutup", 135 + wide_delta, 135, CR_NONE);
 
         // Вертикальная инверсия
-        RD_M_DrawTextSmallRUS(mouse_y_invert ? "drk" : "dsrk", 207 + wide_delta, 145,
+        RD_M_DrawTextSmallRUS(mouse_y_invert ? "drk" : "tutup", 207 + wide_delta, 145,
                               !mlook ? CR_DARKRED : CR_NONE);
 
         // Вертикальное перемещение
-        RD_M_DrawTextSmallRUS(!novert ? "drk" : "dsrk", 235 + wide_delta, 155,
+        RD_M_DrawTextSmallRUS(!novert ? "drk" : "tutup", 235 + wide_delta, 155,
                               mlook ? CR_DARKRED : CR_NONE);
     }
 
@@ -3649,17 +3649,17 @@ static void DrawResetControlsMenu()
     }
     else
     {
-        RD_M_DrawTextBigCenteredRUS("C,hjc eghfdktybz", 42);  // СБРОС УПРАВЛЕНИЯ
+        RD_M_DrawTextBigCenteredRUS("Tetap semula kawalan", 42);  // СБРОС УПРАВЛЕНИЯ
 
         // Пояснения
-        RD_M_DrawTextSmallCenteredRUS(",ELTN BCGJKMPJDFYJ EGHFDKTYBT", 145, CR_DARKRED);  // Будет использовано управление
+        RD_M_DrawTextSmallCenteredRUS("KAWALAN AKAN DITETAPKAN SEMULA KEPADA", 145, CR_DARKRED);  // Будет использовано управление
         if (CurrentItPos == 0)
         {
-            RD_M_DrawTextSmallCenteredRUS("HTRJVTYLETVJT GJHNJV", 155, CR_DARKRED);  // рекомендуемое портом
+            RD_M_DrawTextSmallCenteredRUS("TETAPAN LALAI PORT", 155, CR_DARKRED);  // рекомендуемое портом
         }
         else
         {
-            RD_M_DrawTextSmallRUS("JHBUBYFKMYJUJ", 90 + wide_delta, 155, CR_DARKRED);
+            RD_M_DrawTextSmallRUS("TETAPAN LALAI DOOM", 90 + wide_delta, 155, CR_DARKRED);
             RD_M_DrawTextSmallENG("DOOM", 200 + wide_delta, 155, CR_DARKRED);
         }
     }
@@ -3722,7 +3722,7 @@ static void DrawGamepadSelectMenu()
     }
     else
     {
-        RD_M_DrawTextSmallRUS(useController ? "DRK" : "DSRK", 233 + wide_delta, 32,
+        RD_M_DrawTextSmallRUS(useController ? "BUKA" : "TUTUP", 233 + wide_delta, 32,
                               useController ? CR_GREEN : CR_DARKRED);
     }
 
@@ -3879,7 +3879,7 @@ static void DrawGamepadMenu_1()
             M_snprintf(num, 6, "%2d", currentController->axisSensitivity[SDL_CONTROLLER_AXIS_LEFTX]);
         RD_M_DrawTextSmallRUS(num, 290 + wide_delta, 42, CR_NONE);
 
-        RD_M_DrawTextSmallRUS(currentController->invertAxis[SDL_CONTROLLER_AXIS_LEFTX] ? "DRK" : "DSRK",
+        RD_M_DrawTextSmallRUS(currentController->invertAxis[SDL_CONTROLLER_AXIS_LEFTX] ? "BUKA" : "TUTUP",
                               150 + wide_delta, 52,
                               currentController->invertAxis[SDL_CONTROLLER_AXIS_LEFTX] ? CR_GREEN : CR_DARKRED);
 
@@ -3899,7 +3899,7 @@ static void DrawGamepadMenu_1()
             M_snprintf(num, 6, "%2d", currentController->axisSensitivity[SDL_CONTROLLER_AXIS_LEFTY]);
         RD_M_DrawTextSmallRUS(num, 290 + wide_delta, 92, CR_NONE);
 
-        RD_M_DrawTextSmallRUS(currentController->invertAxis[SDL_CONTROLLER_AXIS_LEFTY] ? "DRK" : "DSRK",
+        RD_M_DrawTextSmallRUS(currentController->invertAxis[SDL_CONTROLLER_AXIS_LEFTY] ? "BUKA" : "TUTUP",
                               150 + wide_delta, 102,
                               currentController->invertAxis[SDL_CONTROLLER_AXIS_LEFTY] ? CR_GREEN : CR_DARKRED);
 
@@ -3919,7 +3919,7 @@ static void DrawGamepadMenu_1()
             M_snprintf(num, 6, "%2d", currentController->axisSensitivity[SDL_CONTROLLER_AXIS_TRIGGERLEFT]);
         RD_M_DrawTextSmallRUS(num, 290 + wide_delta, 142, CR_NONE);
 
-        RD_M_DrawTextSmallRUS(currentController->invertAxis[SDL_CONTROLLER_AXIS_TRIGGERLEFT] ? "DRK" : "DSRK",
+        RD_M_DrawTextSmallRUS(currentController->invertAxis[SDL_CONTROLLER_AXIS_TRIGGERLEFT] ? "BUKA" : "TUTUP",
                               150 + wide_delta, 152,
                               currentController->invertAxis[SDL_CONTROLLER_AXIS_TRIGGERLEFT] ? CR_GREEN : CR_DARKRED);
 
@@ -4093,7 +4093,7 @@ static void DrawGamepadMenu_2()
             M_snprintf(num, 6, "%2d", currentController->axisSensitivity[SDL_CONTROLLER_AXIS_RIGHTX]);
         RD_M_DrawTextSmallRUS(num, 290 + wide_delta, 42, CR_NONE);
 
-        RD_M_DrawTextSmallRUS(currentController->invertAxis[SDL_CONTROLLER_AXIS_RIGHTX] ? "DRK" : "DSRK",
+        RD_M_DrawTextSmallRUS(currentController->invertAxis[SDL_CONTROLLER_AXIS_RIGHTX] ? "BUKA" : "TUTUP",
                               150 + wide_delta, 52,
                               currentController->invertAxis[SDL_CONTROLLER_AXIS_RIGHTX] ? CR_GREEN : CR_DARKRED);
 
@@ -4113,7 +4113,7 @@ static void DrawGamepadMenu_2()
             M_snprintf(num, 6, "%2d", currentController->axisSensitivity[SDL_CONTROLLER_AXIS_RIGHTY]);
         RD_M_DrawTextSmallRUS(num, 290 + wide_delta, 92, CR_NONE);
 
-        RD_M_DrawTextSmallRUS(currentController->invertAxis[SDL_CONTROLLER_AXIS_RIGHTY] ? "DRK" : "DSRK",
+        RD_M_DrawTextSmallRUS(currentController->invertAxis[SDL_CONTROLLER_AXIS_RIGHTY] ? "BUKA" : "TUTUP",
                               150 + wide_delta, 102,
                               currentController->invertAxis[SDL_CONTROLLER_AXIS_RIGHTY] ? CR_GREEN : CR_DARKRED);
 
@@ -4133,7 +4133,7 @@ static void DrawGamepadMenu_2()
             M_snprintf(num, 6, "%2d", currentController->axisSensitivity[SDL_CONTROLLER_AXIS_TRIGGERRIGHT]);
         RD_M_DrawTextSmallRUS(num, 290 + wide_delta, 142, CR_NONE);
 
-        RD_M_DrawTextSmallRUS(currentController->invertAxis[SDL_CONTROLLER_AXIS_TRIGGERRIGHT] ? "DRK" : "DSRK",
+        RD_M_DrawTextSmallRUS(currentController->invertAxis[SDL_CONTROLLER_AXIS_TRIGGERRIGHT] ? "BUKA" : "TUTUP",
                               150 + wide_delta, 152,
                               currentController->invertAxis[SDL_CONTROLLER_AXIS_TRIGGERRIGHT] ? CR_GREEN : CR_DARKRED);
 
@@ -4313,7 +4313,7 @@ static void M_RD_Draw_Gameplay_1(void)
 
         // Разноцветная кровь и трупы
         RD_M_DrawTextSmallRUS(colored_blood == 1 ? "drk" :
-                              colored_blood == 2 ? "drk+iev" : "dsrk",
+                              colored_blood == 2 ? "drk+iev" : "tutup",
                               242 + wide_delta, 95, colored_blood ? CR_GREEN : CR_DARKRED);
 
         // Анимация жидкостей
@@ -4475,16 +4475,16 @@ static void M_RD_Draw_Gameplay_2(void)
     else
     {
         // Дополнительные лица игрока
-        RD_M_DrawTextSmallRUS(extra_player_faces ? "DRK" : "DSRK", 247 + wide_delta, 35,
+        RD_M_DrawTextSmallRUS(extra_player_faces ? "BUKA" : "TUTUP", 247 + wide_delta, 35,
                               extra_player_faces ? CR_GREEN : CR_DARKRED);
 
         // Отрицательное здоровье
-        RD_M_DrawTextSmallRUS(negative_health ? "DRK" : "DSRK", 217 + wide_delta, 45,
+        RD_M_DrawTextSmallRUS(negative_health ? "BUKA" : "TUTUP", 217 + wide_delta, 45,
                               negative_health ? CR_GREEN : CR_DARKRED);
 
         // Разноцветные элементы
-        RD_M_DrawTextSmallRUS(sbar_colored == 1 ? "DRK (,TP %)"  :
-                              sbar_colored == 2 ? "DRK" : "DSRK", 213 + wide_delta, 55,
+        RD_M_DrawTextSmallRUS(sbar_colored == 1 ? "BUKA (,TP %)"  :
+                              sbar_colored == 2 ? "BUKA" : "TUTUP", 213 + wide_delta, 55,
                               sbar_colored ? CR_GREEN : CR_DARKRED);
 
         if (sbar_colored == 0 || gamemission == jaguar)
@@ -4670,7 +4670,7 @@ static void M_RD_Draw_Gameplay_3(void)
 
         if (strict_mode)
         {
-            RD_M_DrawTextSmallRUS("Y*L", 227 + wide_delta, 75, CR_DARKRED);
+            RD_M_DrawTextSmallRUS("TIDAK TERSEDIA", 227 + wide_delta, 75, CR_DARKRED);
         }
         else
         {    
@@ -4683,13 +4683,13 @@ static void M_RD_Draw_Gameplay_3(void)
                               crosshair_draw ? CR_GREEN : CR_DARKRED);
 
         // Форма
-        RD_M_DrawTextSmallRUS(crosshair_shape == 1 ? "RHTCN*2" :      // КРЕСТ/2
-                              crosshair_shape == 2 ? "[" :            // X
-                              crosshair_shape == 3 ? "RHEU" :         // КРУГ
-                              crosshair_shape == 4 ? "EUJK" :         // УГОЛ
-                              crosshair_shape == 5 ? "NHTEUJKMYBR" :  // ТРЕУГОЛЬНИК
-                              crosshair_shape == 6 ? "NJXRF" :        // ТОЧКА
-                                                     "RHTCN",         // КРЕСТ
+        RD_M_DrawTextSmallRUS(crosshair_shape == 1 ? "SILANG/2" :      // КРЕСТ/2
+                              crosshair_shape == 2 ? "X" :            // X
+                              crosshair_shape == 3 ? "BULAT" :         // КРУГ
+                              crosshair_shape == 4 ? "SUDUT" :         // УГОЛ
+                              crosshair_shape == 5 ? "SEGI TIGA" :  // ТРЕУГОЛЬНИК
+                              crosshair_shape == 6 ? "DOT" :        // ТОЧКА
+                                                     "SILANG",         // КРЕСТ
                               86 + wide_delta, 105, CR_GREEN);
 
         // Увеличенный размер
@@ -4697,10 +4697,10 @@ static void M_RD_Draw_Gameplay_3(void)
                               crosshair_scale ? CR_GREEN : CR_DARKRED);
 
         // Индикация
-        RD_M_DrawTextSmallRUS(crosshair_type == 1 ? "Pljhjdmt" :       // Здоровье
-                              crosshair_type == 2 ? "Gjlcdtnrf wtkb" : // Подсветка цели
-                              crosshair_type == 3 ? "Gjlcdtnrf wtkb+pljhjdmt" : // Подсветка цели + здоровье
-                              "Cnfnbxyfz", 117 + wide_delta, 135, // Статичная
+        RD_M_DrawTextSmallRUS(crosshair_type == 1 ? "Nyawa" :       // Здоровье
+                              crosshair_type == 2 ? "Penyerlahan Sasaran" : // Подсветка цели
+                              crosshair_type == 3 ? "Penyerlahan Sasaran + Nyawa" : // Подсветка цели + здоровье
+                              "Statik", 117 + wide_delta, 135, // Статичная
                               crosshair_type ? CR_GREEN : CR_DARKRED);
 
         // Footer
@@ -4876,18 +4876,18 @@ static void M_RD_Draw_Gameplay_4(void)
         // Физика столкновений
         if (strict_mode)
         {
-            RD_M_DrawTextSmallRUS("Y*L", 193 + wide_delta, 35, CR_DARKRED);
+            RD_M_DrawTextSmallRUS("Tidak Tersedia", 193 + wide_delta, 35, CR_DARKRED);
         }
         else
         {
-            RD_M_DrawTextSmallRUS(improved_collision ? "EKEXITYYFZ" : "JHBUBYFKMYFZ", 193 + wide_delta, 35,
+            RD_M_DrawTextSmallRUS(improved_collision ? "DINAIK TARAF" : "ASAL", 193 + wide_delta, 35,
                                   improved_collision && !netgame ? CR_GREEN : CR_DARKRED);
         }
 
         // Перемещение под/над монстрами
         if (strict_mode)
         {
-            RD_M_DrawTextSmallRUS("Y*L", 274 + wide_delta, 45, CR_DARKRED);
+            RD_M_DrawTextSmallRUS("TIDAK TERSEDIA", 274 + wide_delta, 45, CR_DARKRED);
         }
         else
         {
@@ -4898,7 +4898,7 @@ static void M_RD_Draw_Gameplay_4(void)
         // Трупы сползают с возвышений
         if (strict_mode)
         {
-            RD_M_DrawTextSmallRUS("Y*L", 256 + wide_delta, 55, CR_DARKRED);
+            RD_M_DrawTextSmallRUS("TIDAK TERSEDIA", 256 + wide_delta, 55, CR_DARKRED);
         }
         else
         {
@@ -4909,7 +4909,7 @@ static void M_RD_Draw_Gameplay_4(void)
         // Двустволка разрывает врагов
         if (strict_mode)
         {
-            RD_M_DrawTextSmallRUS("Y*L", 254 + wide_delta, 65, CR_DARKRED);
+            RD_M_DrawTextSmallRUS("TIDAK TERSEDIA", 254 + wide_delta, 65, CR_DARKRED);
         }
         else
         {
@@ -4920,7 +4920,7 @@ static void M_RD_Draw_Gameplay_4(void)
         // Подбрасывать выпавшие предметы
         if (strict_mode)
         {
-            RD_M_DrawTextSmallRUS("Y*L", 285 + wide_delta, 75, CR_DARKRED);
+            RD_M_DrawTextSmallRUS("TIDAK TERSEDIA", 285 + wide_delta, 75, CR_DARKRED);
         }
         else
         {
@@ -4931,7 +4931,7 @@ static void M_RD_Draw_Gameplay_4(void)
         // Амплитуда левитации артефактов
         RD_M_DrawTextSmallRUS(floating_powerups == 1 ? "CKF,JT"  :          // Слабое
                               floating_powerups == 2 ? "CHTLYTT" :          // Среднее
-                              floating_powerups == 3 ? "CBKMYJT" : "DSRK",  // Сильное | Выкл
+                              floating_powerups == 3 ? "CBKMYJT" : "TUTUP",  // Сильное | Выкл
                               256 + wide_delta, 85, floating_powerups && !netgame ? CR_GREEN : CR_DARKRED);
 
         // Оружие при стрельбе
@@ -4951,13 +4951,13 @@ static void M_RD_Draw_Gameplay_4(void)
         // Гор. автоприцеливание
         if (strict_mode)
         {
-            RD_M_DrawTextSmallRUS("Y*L", 204 + wide_delta, 135, CR_DARKRED);
+            RD_M_DrawTextSmallRUS("TIDAK TERSEDIA", 204 + wide_delta, 135, CR_DARKRED);
         }
         else
         {
             RD_M_DrawTextSmallRUS(horizontal_autoaim == 0 ? "[bncrfys" :  // хитсканы
                                   horizontal_autoaim == 1 ? "cyfhzls" :   // снаряды
-                                  horizontal_autoaim == 2 ? "dsrk" : 
+                                  horizontal_autoaim == 2 ? "tutup" : 
                                                             "drk", 204 + wide_delta, 135,
                                                   netgame ? CR_DARKRED :
                                   horizontal_autoaim == 0 ? CR_DARKGREEN :
@@ -5101,7 +5101,7 @@ static void M_RD_Draw_Gameplay_5(void)
         RD_M_DrawTextSmallRUS(demotimer == 1 ? "ghb ghjbuhsdfybb" :
                               demotimer == 2 ? "ghb pfgbcb" :
                               demotimer == 3 ? "dctulf" :
-                              "dsrk", 180 + wide_delta, 105,
+                              "tutup", 180 + wide_delta, 105,
                               demotimer > 0 ? CR_GREEN : CR_DARKRED);
 
         // Время таймера
