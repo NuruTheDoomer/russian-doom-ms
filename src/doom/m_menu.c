@@ -449,25 +449,25 @@ static char *M_ID_ColorName (int color)
 {
     switch (color)
     {
-        case 1:   return english_language ? "red"        : "rhfcysq";          break; // Красный
-        case 2:   return english_language ? "dark red"   : "ntvyj-rhfcysq";    break; // Тёмно-красный
-        case 3:   return english_language ? "green"      : "ptktysq";          break; // Зеленый
-        case 4:   return english_language ? "dark green" : "ntvyj-ptktysq";    break; // Тёмно-зеленый
-        case 5:   return english_language ? "olive"      : "jkbdrjdsq";        break; // Оливковый
-        case 6:   return english_language ? "blue"       : "cbybq";            break; // Синий
-        case 7:   return english_language ? "dark blue"  : "ntvyj-cbybq";      break; // Тёмно-синий
-        case 8:   return english_language ? "yellow"     : ";tknsq";           break; // Жёлтый
-        case 9:   return english_language ? "orange"     : "jhfy;tdsq";        break; // Оранжевый
-        case 10:  return english_language ? "white"      : ",tksq";            break; // Белый
-        case 11:  return english_language ? "gray"       : "cthsq";            break; // Серый
-        case 12:  return english_language ? "dark gray"  : "ntvyj-cthsq";      break; // Тёмно-серый
-        case 13:  return english_language ? "tan"        : ",t;tdsq";          break; // Бежевый
-        case 14:  return english_language ? "brown"      : "rjhbxytdsq";       break; // Коричневый
-        case 15:  return english_language ? "almond"     : "vbylfkmysq";       break; // Миндальный
-        case 16:  return english_language ? "khaki"      : "[frb";             break; // Хаки
-        case 17:  return english_language ? "pink"       : "hjpjdsq";          break; // Розовый
-        case 18:  return english_language ? "burgundy"   : ",jhljdsq";         break; // Бордовый
-        default:  return english_language ? "uncolored"  : ",tp jrhfibdfybz";  break;  // Без окрашивания
+        case 1:   return english_language ? "red"        : "merah";          break; // Красный
+        case 2:   return english_language ? "dark red"   : "merah gelap";    break; // Тёмно-красный
+        case 3:   return english_language ? "green"      : "hijau";          break; // Зеленый
+        case 4:   return english_language ? "dark green" : "hijau gelap";    break; // Тёмно-зеленый
+        case 5:   return english_language ? "olive"      : "zaitun";        break; // Оливковый
+        case 6:   return english_language ? "blue"       : "biru";            break; // Синий
+        case 7:   return english_language ? "dark blue"  : "biru gelap";      break; // Тёмно-синий
+        case 8:   return english_language ? "yellow"     : "kuning";           break; // Жёлтый
+        case 9:   return english_language ? "orange"     : "jingga";        break; // Оранжевый
+        case 10:  return english_language ? "white"      : "putih";            break; // Белый
+        case 11:  return english_language ? "gray"       : "kelabu";            break; // Серый
+        case 12:  return english_language ? "dark gray"  : "kelabu gelap";      break; // Тёмно-серый
+        case 13:  return english_language ? "tan"        : "perang kulit";          break; // Бежевый
+        case 14:  return english_language ? "brown"      : "perang";       break; // Коричневый
+        case 15:  return english_language ? "almond"     : "badam";       break; // Миндальный
+        case 16:  return english_language ? "khaki"      : "khaki";             break; // Хаки
+        case 17:  return english_language ? "pink"       : "merah jambu";          break; // Розовый
+        case 18:  return english_language ? "burgundy"   : "burgundy";         break; // Бордовый
+        default:  return english_language ? "uncolored"  : "tidak diwarna";  break;  // Без окрашивания
     }
 }
 
@@ -804,25 +804,25 @@ static const PageDescriptor_t AutomapStatsDescriptor = {
 };
 
 static MenuItem_t AutomapItems[] = {
-    I_TITLE( "Automap",            "Rfhnf"), // Карта
-    I_LRFUNC("color scheme:",      "wdtnjdfz c[tvf:",    M_RD_Change_AutomapColor), // Цветовая схема:
-    I_SWITCH("line antialiasing:", "cukf;bdfybt kbybq:", M_RD_Change_AutomapAntialias), // Сглаживание линий:
-    I_SWITCH("rotate mode:",       "ht;bv dhfotybz:",    M_RD_Change_AutomapRotate), // Режим вращения:
-    I_SWITCH("overlay mode:",      "ht;bv yfkj;tybz:",   M_RD_Change_AutomapOverlay), // Режим наложения:
-    I_LRFUNC("overlay background opacity", "pfntvytybt ajyf ghb yfkj;tybb", M_RD_Change_AutomapOverlayBG), // Затемнение фона при наложении
+    I_TITLE( "Automap",            "Peta Kawasan"), // Карта
+    I_LRFUNC("color scheme:",      "Skema Warna:",    M_RD_Change_AutomapColor), // Цветовая схема:
+    I_SWITCH("line antialiasing:", "Antipengaliasan pada garisan:", M_RD_Change_AutomapAntialias), // Сглаживание линий:
+    I_SWITCH("rotate mode:",       "mod putaran:",    M_RD_Change_AutomapRotate), // Режим вращения:
+    I_SWITCH("overlay mode:",      "mod tindanan:",   M_RD_Change_AutomapOverlay), // Режим наложения:
+    I_LRFUNC("overlay background opacity", "kelegapan latar belakang tindanan", M_RD_Change_AutomapOverlayBG), // Затемнение фона при наложении
     I_EMPTY,
-    I_SWITCH("follow mode:",       "ht;bv cktljdfybz:",  M_RD_Change_AutomapFollow), // Режим следования:
-    I_SWITCH("grid:",              "ctnrf:",             M_RD_Change_AutomapGrid), // Сетка:
-    I_LRFUNC("grid size:",         "hfpvth ctnrb:",      M_RD_Change_AutomapGridSize), // Размер сетки:
-    I_LRFUNC("mark color:",        "wdtn jnvtnjr:",      M_RD_Change_AutomapMarkColor), // Цвет отметок:
-    I_SWITCH("highlight secrets:", "gjlcdtxbdfnm nfqybrb:",  M_RD_Change_AutomapSecrets), // Подсвечивать тайники:
+    I_SWITCH("follow mode:",       "mod ikut:",  M_RD_Change_AutomapFollow), // Режим следования:
+    I_SWITCH("grid:",              "grid:",             M_RD_Change_AutomapGrid), // Сетка:
+    I_LRFUNC("grid size:",         "saiz grid:",      M_RD_Change_AutomapGridSize), // Размер сетки:
+    I_LRFUNC("mark color:",        "warna tanda:",      M_RD_Change_AutomapMarkColor), // Цвет отметок:
+    I_SWITCH("highlight secrets:", "serlahkan rahasia:",  M_RD_Change_AutomapSecrets), // Подсвечивать тайники:
     I_SETMENU(NULL, NULL, &StatsMenu)
 };
 
 MENU_STATIC_PAGED(AutomapMenu,
     35, 35,
     25,
-    "AUTOMAP AND STATS", "RFHNF B CNFNBCNBRF", false, // КАРТА И СТАТИСТИКА
+    "AUTOMAP AND STATS", "PETA KAWASAN DAN STATISTIK", false, // КАРТА И СТАТИСТИКА
     AutomapItems, false,
     M_RD_Draw_AutomapSettings,
     &DisplayMenu,
@@ -834,15 +834,15 @@ MENU_STATIC_PAGED(AutomapMenu,
 // -----------------------------------------------------------------------------
 
 static MenuItem_t StatsItems[] = {
-    I_TITLE( "Statistics",              "Cnfnbcnbrf"), // Статистика
-    I_SWITCH("placement:",              "hfcgjkj;tybt:",            M_RD_Change_StatsPlacement), // Расположение:
-    I_LRFUNC("level stats/frags:",      "cnfnbcnbrf ehjdyz*ahfub:", M_RD_Change_StatsKIS), // Статистика уровня/фраги:
-    I_LRFUNC("skill level:",            "ehjdtym ckj;yjcnb:",       M_RD_Change_StatsSkill), // Уровень сложности:
-    I_LRFUNC("level/deathmatch timer:", "nfqvth ehjdyz*ltavfnx:",   M_RD_Change_StatsLevelTime), // Таймер уровня/дефматч:
-    I_LRFUNC("total time:",             "j,ott dhtvz:",             M_RD_Change_StatsTotalTime), // Общее время:
-    I_LRFUNC("player coords:",          "rjjhlbyfns buhjrf:",       M_RD_Change_StatsCoords), // Координаты игрока:
-    I_SWITCH("level name:",             "yfpdfybt ehjdyz:",         M_RD_Change_StatsLevelName), // Название уровня:
-    I_SWITCH("coloring:",               "jrhfibdfybt:",             M_RD_Change_StatsColors), // Окрашивание:
+    I_TITLE( "Statistics",              "Statistik"), // Статистика
+    I_SWITCH("placement:",              "peletakan:",            M_RD_Change_StatsPlacement), // Расположение:
+    I_LRFUNC("level stats/frags:",      "statistik tahap/bunuh:", M_RD_Change_StatsKIS), // Статистика уровня/фраги:
+    I_LRFUNC("skill level:",            "tahap kesukaran:",       M_RD_Change_StatsSkill), // Уровень сложности:
+    I_LRFUNC("level/deathmatch timer:", "pemasa tahap/deathmatch:",   M_RD_Change_StatsLevelTime), // Таймер уровня/дефматч:
+    I_LRFUNC("total time:",             "jumlah masa:",             M_RD_Change_StatsTotalTime), // Общее время:
+    I_LRFUNC("player coords:",          "koordinat pemain:",       M_RD_Change_StatsCoords), // Координаты игрока:
+    I_SWITCH("level name:",             "nama tahap:",         M_RD_Change_StatsLevelName), // Название уровня:
+    I_SWITCH("coloring:",               "warna:",             M_RD_Change_StatsColors), // Окрашивание:
     I_EMPTY,
     I_EMPTY,
     I_EMPTY,
@@ -852,7 +852,7 @@ static MenuItem_t StatsItems[] = {
 MENU_STATIC_PAGED(StatsMenu,
     35, 35,
     25,
-    "AUTOMAP AND STATS", "RFHNF B CNFNBCNBRF", false, // КАРТА И СТАТИСТИКА
+    "AUTOMAP AND STATS", "PETA KAWASAN DAN STATISTIK", false, // КАРТА И СТАТИСТИКА
      StatsItems, false,
     M_RD_Draw_StatsSettings,
     &DisplayMenu,
@@ -864,22 +864,22 @@ MENU_STATIC_PAGED(StatsMenu,
 // -----------------------------------------------------------------------------
 
 static MenuItem_t SoundItems[] = {
-    I_TITLE(  "volume",                   "uhjvrjcnm"), // Громкость
-    I_LRFUNC( "sfx volume",               "pder",                          M_RD_Change_SfxVol), // Звук
+    I_TITLE(  "volume",                   "kelantangan"), // Громкость
+    I_LRFUNC( "sfx volume",               "kesan suara",                          M_RD_Change_SfxVol), // Звук
     I_EMPTY,
-    I_LRFUNC( "music volume",             "vepsrf",                        M_RD_Change_MusicVol), // Музыка
+    I_LRFUNC( "music volume",             "muzik",                        M_RD_Change_MusicVol), // Музыка
     I_EMPTY,
-    I_TITLE(  "channels",                 "djcghjbpdtltybt"), // Воспроизведение
-    I_LRFUNC( "sound channels",           "Pderjdst rfyfks",               M_RD_Change_SfxChannels), // Звуковые каналы
+    I_TITLE(  "channels",                 "saluran"), // Воспроизведение
+    I_LRFUNC( "sound channels",           "saluran suara",               M_RD_Change_SfxChannels), // Звуковые каналы
     I_EMPTY,
-    I_TITLE(  "advanced",                 "ljgjkybntkmyj"), // Дополнительно
-    I_SETMENU("sound system settings...", "yfcnhjqrb pderjdjq cbcntvs>>>", &SoundSysMenu)  // Настройки звуковой системы...
+    I_TITLE(  "advanced",                 "lanjutan"), // Дополнительно
+    I_SETMENU("sound system settings...", "tetapan sistem suara", &SoundSysMenu)  // Настройки звуковой системы...
 };
 
 MENU_STATIC(SoundMenu,
     35, 35,
     25,
-    "SOUND OPTIONS", "YFCNHJQRB PDERF", false, // НАСТРОЙКИ ЗВУКА
+    "SOUND OPTIONS", "TETAPAN SUARA", false, // НАСТРОЙКИ ЗВУКА
     SoundItems, false,
     M_RD_Draw_Audio,
     &RDOptionsMenu
@@ -890,22 +890,22 @@ MENU_STATIC(SoundMenu,
 // -----------------------------------------------------------------------------
 
 static MenuItem_t SoundSysItems[] = {
-    I_TITLE( "sound system",          "pderjdfz cbcntvf"), // ЗВУКОВАЯ СИСТЕМА
-    I_LRFUNC("sound effects:",        "pderjdst \'aatrns:",         M_RD_Change_SoundDevice), // Звуковые эффекты
-    I_LRFUNC("music:",                "vepsrf:",                    M_RD_Change_MusicDevice), // Музыка
-    I_TITLE( "quality",               "rfxtcndj pdexfybz"), // Качество звучания
-    I_LRFUNC("sampling frequency:",   "xfcnjnf lbcrhtnbpfwbb:",     M_RD_Change_Sampling), // Частота дискретизации
-    I_TITLE( "Miscellaneous",         "hfpyjt"), // Разное
-    I_SWITCH("speaker test",          "ntcn pderjds[ rfyfkjd",      M_RD_SpeakerTest), // Тест звуковых каналов
-    I_SWITCH("sound effects mode:",   "Ht;bv pderjds[ \'aatrnjd:",  M_RD_Change_SndMode), // Режим звуковых эффектов
-    I_SWITCH("pitch-shifted sounds:", "ghjbpdjkmysq gbnx-ibanbyu:", M_RD_Change_PitchShifting), // Произвольный питч-шифтинг
-    I_SWITCH("mute inactive window:", "pder d ytfrnbdyjv jryt:",    M_RD_Change_MuteInactive)  // Звук в неактивном окне
+    I_TITLE( "sound system",          "sistem suara"), // ЗВУКОВАЯ СИСТЕМА
+    I_LRFUNC("sound effects:",        "kesan suara:",         M_RD_Change_SoundDevice), // Звуковые эффекты
+    I_LRFUNC("music:",                "muzik:",                    M_RD_Change_MusicDevice), // Музыка
+    I_TITLE( "quality",               "kualiti"), // Качество звучания
+    I_LRFUNC("sampling frequency:",   "kekerapan pensampelan:",     M_RD_Change_Sampling), // Частота дискретизации
+    I_TITLE( "Miscellaneous",         "lain-lain"), // Разное
+    I_SWITCH("speaker test",          "percubaan pembesar suara",      M_RD_SpeakerTest), // Тест звуковых каналов
+    I_SWITCH("sound effects mode:",   "mod kesan suara:",  M_RD_Change_SndMode), // Режим звуковых эффектов
+    I_SWITCH("pitch-shifted sounds:", "bunyi beralih nada:", M_RD_Change_PitchShifting), // Произвольный питч-шифтинг
+    I_SWITCH("mute inactive window:", "redam tetingkap tidak aktif:",    M_RD_Change_MuteInactive)  // Звук в неактивном окне
 };
 
 MENU_STATIC(SoundSysMenu,
     35, 35,
     25,
-    "SOUND SYSTEM", "PDERJDFZ CBCNTVF", false, // ЗВУКОВАЯ СИСТЕМА
+    "SOUND SYSTEM", "SISTEM SUARA", false, // ЗВУКОВАЯ СИСТЕМА
     SoundSysItems, false,
     M_RD_Draw_Audio_System,
     &SoundMenu
@@ -916,26 +916,26 @@ MENU_STATIC(SoundSysMenu,
 // -----------------------------------------------------------------------------
 
 static MenuItem_t ControlsItems[] = {
-    I_TITLE(  "Controls",               "eghfdktybt"), // Управление
-    I_SETMENU("Customize Controls...",  "yfcnhjqrb eghfdktybz>>>",   &Bindings1Menu), // Настройки управления...
-    I_SETMENU("Gamepad Settings...",    "yfcnhjqrb utqvgflf>>>",     &GamepadSelectMenu), // Настройки геймпада...
-    I_SWITCH( "Always run:",            "Ht;bv gjcnjzyyjuj ,tuf:",   M_RD_Change_AlwaysRun), // Режим постоянного бега
-    I_TITLE(  "mouse",                  "vsim"), // Мышь
-    I_LRFUNC( "sensivity",              "crjhjcnm",                  M_RD_Change_Sensitivity), // Скорость
+    I_TITLE(  "Controls",               "Kawalan"), // Управление
+    I_SETMENU("Customize Controls...",  "Suaikan Kawalan",   &Bindings1Menu), // Настройки управления...
+    I_SETMENU("Gamepad Settings...",    "Tetapan Pad Permainan",     &GamepadSelectMenu), // Настройки геймпада...
+    I_SWITCH( "Always run:",            "Sentiasa lari:",   M_RD_Change_AlwaysRun), // Режим постоянного бега
+    I_TITLE(  "mouse",                  "tetikus"), // Мышь
+    I_LRFUNC( "sensivity",              "sensitiviti",                  M_RD_Change_Sensitivity), // Скорость
     I_EMPTY,
-    I_LRFUNC( "acceleration",           "frctkthfwbz",               M_RD_Change_Acceleration), // Акселерация
+    I_LRFUNC( "acceleration",           "pecutan",               M_RD_Change_Acceleration), // Акселерация
     I_EMPTY,
-    I_LRFUNC( "acceleration threshold", "gjhju frctkthfwbb",         M_RD_Change_Threshold), // Порог акселерации
+    I_LRFUNC( "acceleration threshold", "ambang pecutan",         M_RD_Change_Threshold), // Порог акселерации
     I_EMPTY,
-    I_SWITCH( "mouse look:",            "j,pjh vsim.:",              M_RD_Change_MouseLook), // Обзор мышью
-    I_SWITCH( "invert y axis:",         "dthnbrfkmyfz bydthcbz:",    M_RD_Change_InvertY), // Вертикальная инверсия
-    I_SWITCH( "vertical movement:",     "dthnbrfkmyjt gthtvtotybt:", M_RD_Change_Novert)  // Вертикальное перемещение
+    I_SWITCH( "mouse look:",            "pandangan bebas:",              M_RD_Change_MouseLook), // Обзор мышью
+    I_SWITCH( "invert y axis:",         "songsang paksi y:",    M_RD_Change_InvertY), // Вертикальная инверсия
+    I_SWITCH( "vertical movement:",     "pergerakan menegak:", M_RD_Change_Novert)  // Вертикальное перемещение
 };
 
 MENU_STATIC(ControlsMenu,
     35, 35,
     25,
-    "CONTROL SETTINGS", "EGHFDKTYBT", false, // УПРАВЛЕНИЕ
+    "CONTROL SETTINGS", "TETAPAN KAWALAN", false, // УПРАВЛЕНИЕ
     ControlsItems, false,
     M_RD_Draw_Controls,
     &RDOptionsMenu
@@ -952,18 +952,18 @@ static const PageDescriptor_t BindingsPageDescriptor = {
 };
 
 static MenuItem_t Bindings1Items[] = {
-    I_TITLE("Movement",      "ldb;tybt"),
-    I_EFUNC("Move Forward",  "ldb;tybt dgthtl", BK_StartBindingKey, bk_forward),      // Движение вперед
-    I_EFUNC("Move Backward", "ldb;tybt yfpfl",  BK_StartBindingKey, bk_backward),     // Движение назад
-    I_EFUNC("Turn Left",     "gjdjhjn yfktdj",  BK_StartBindingKey, bk_turn_left),    // Поворот налево
-    I_EFUNC("Turn Right",    "gjdjhjn yfghfdj", BK_StartBindingKey, bk_turn_right),   // Поворот направо
-    I_EFUNC("Strafe Left",   ",jrjv dktdj",     BK_StartBindingKey, bk_strafe_left),  // Боком влево
-    I_EFUNC("Strafe Right",  ",jrjv dghfdj",    BK_StartBindingKey, bk_strafe_right), // Боком вправо
-    I_EFUNC("Speed On",      ",tu",             BK_StartBindingKey, bk_speed),        // Бег
-    I_EFUNC("Strafe On",     "ldb;tybt ,jrjv",  BK_StartBindingKey, bk_strafe),       // Движение боком
-    I_TITLE("Action",        "ltqcndbt"),
-    I_EFUNC("Fire/Attack",   "fnfrf*cnhtkm,f",  BK_StartBindingKey, bk_fire),         // Атака/стрельба
-    I_EFUNC("Use",           "bcgjkmpjdfnm",    BK_StartBindingKey, bk_use),          // Использовать
+    I_TITLE("Movement",      "Pergerakan"),
+    I_EFUNC("Move Forward",  "Gerak Ke Hadapan", BK_StartBindingKey, bk_forward),      // Движение вперед
+    I_EFUNC("Move Backward", "Gerak Ke Belakang",  BK_StartBindingKey, bk_backward),     // Движение назад
+    I_EFUNC("Turn Left",     "Pusing Ke Kiri",  BK_StartBindingKey, bk_turn_left),    // Поворот налево
+    I_EFUNC("Turn Right",    "Pusing Ke Kanan", BK_StartBindingKey, bk_turn_right),   // Поворот направо
+    I_EFUNC("Strafe Left",   "Gerak Ke Kiri",     BK_StartBindingKey, bk_strafe_left),  // Боком влево
+    I_EFUNC("Strafe Right",  "Gerak Ke Kanan",    BK_StartBindingKey, bk_strafe_right), // Боком вправо
+    I_EFUNC("Speed On",      "Mod Laju Buka",             BK_StartBindingKey, bk_speed),        // Бег
+    I_EFUNC("Strafe On",     "Mod Gerak Kiri Kanan Buka",  BK_StartBindingKey, bk_strafe),       // Движение боком
+    I_TITLE("Action",        "Tindakan"),
+    I_EFUNC("Fire/Attack",   "Tembak/Serang",  BK_StartBindingKey, bk_fire),         // Атака/стрельба
+    I_EFUNC("Use",           "Guna",    BK_StartBindingKey, bk_use),          // Использовать
     I_EMPTY,
     I_SETMENU(NULL, NULL, &Bindings2Menu), // Далее >
     I_SETMENU(NULL, NULL, &Bindings6Menu), // < Назад
@@ -973,7 +973,7 @@ static MenuItem_t Bindings1Items[] = {
 MENU_STATIC_PAGED(Bindings1Menu,
     35, 35,
     25,
-    "Customize controls", "Yfcnhjqrb eghfdktybz", false, // Настройки управления
+    "Customize controls", "Suaikan kawalan", false, // Настройки управления
     Bindings1Items, false,
     M_RD_Draw_Bindings,
     &ControlsMenu,
@@ -985,17 +985,17 @@ MENU_STATIC_PAGED(Bindings1Menu,
 // -----------------------------------------------------------------------------
 
 static MenuItem_t Bindings2Items[] = {
-    I_TITLE("Weapons",         "jhe;bt"),
-    I_EFUNC("Weapon 1",        "jhe;bt 1",          BK_StartBindingKey, bk_weapon_1),    // Оружие 1
-    I_EFUNC("Weapon 2",        "jhe;bt 2",          BK_StartBindingKey, bk_weapon_2),    // Оружие 2
-    I_EFUNC("Weapon 3",        "jhe;bt 3",          BK_StartBindingKey, bk_weapon_3),    // Оружие 3
-    I_EFUNC("Weapon 4",        "jhe;bt 4",          BK_StartBindingKey, bk_weapon_4),    // Оружие 4
-    I_EFUNC("Weapon 5",        "jhe;bt 5",          BK_StartBindingKey, bk_weapon_5),    // Оружие 5
-    I_EFUNC("Weapon 6",        "jhe;bt 6",          BK_StartBindingKey, bk_weapon_6),    // Оружие 6
-    I_EFUNC("Weapon 7",        "jhe;bt 7",          BK_StartBindingKey, bk_weapon_7),    // Оружие 7
-    I_EFUNC("Weapon 8",        "jhe;bt 8",          BK_StartBindingKey, bk_weapon_8),    // Оружие 8
-    I_EFUNC("Previous weapon", "ghtlsleott jhe;bt", BK_StartBindingKey, bk_weapon_prev), // Предыдущее оружие
-    I_EFUNC("Next weapon",     "cktle.ott jhe;bt",  BK_StartBindingKey, bk_weapon_next), // Следующее оружие
+    I_TITLE("Weapons",         "Senjata"),
+    I_EFUNC("Weapon 1",        "Senjata 1",          BK_StartBindingKey, bk_weapon_1),    // Оружие 1
+    I_EFUNC("Weapon 2",        "Senjata 2",          BK_StartBindingKey, bk_weapon_2),    // Оружие 2
+    I_EFUNC("Weapon 3",        "Senjata 3",          BK_StartBindingKey, bk_weapon_3),    // Оружие 3
+    I_EFUNC("Weapon 4",        "Senjata 4",          BK_StartBindingKey, bk_weapon_4),    // Оружие 4
+    I_EFUNC("Weapon 5",        "Senjata 5",          BK_StartBindingKey, bk_weapon_5),    // Оружие 5
+    I_EFUNC("Weapon 6",        "Senjata 6",          BK_StartBindingKey, bk_weapon_6),    // Оружие 6
+    I_EFUNC("Weapon 7",        "Senjata 7",          BK_StartBindingKey, bk_weapon_7),    // Оружие 7
+    I_EFUNC("Weapon 8",        "Senjata 8",          BK_StartBindingKey, bk_weapon_8),    // Оружие 8
+    I_EFUNC("Previous weapon", "Senjata Sebelumnya", BK_StartBindingKey, bk_weapon_prev), // Предыдущее оружие
+    I_EFUNC("Next weapon",     "Senjata Seterusnya",  BK_StartBindingKey, bk_weapon_next), // Следующее оружие
     I_EMPTY,
     I_EMPTY,
     I_SETMENU(NULL, NULL, &Bindings3Menu), // Далее >
@@ -1006,7 +1006,7 @@ static MenuItem_t Bindings2Items[] = {
 MENU_STATIC_PAGED(Bindings2Menu,
     35, 35,
     25,
-    "Customize controls", "Yfcnhjqrb eghfdktybz", false, // Настройки управления
+    "Customize controls", "Suaikan kawalan", false, // Настройки управления
     Bindings2Items, false,
     M_RD_Draw_Bindings,
     &ControlsMenu,
@@ -1018,18 +1018,18 @@ MENU_STATIC_PAGED(Bindings2Menu,
 // -----------------------------------------------------------------------------
 
 static MenuItem_t Bindings3Items[] = {
-    I_TITLE("Shortcut keys",      ",scnhsq ljcneg"),
-    I_EFUNC("Open help",          "'rhfy gjvjob",        BK_StartBindingKey, bk_menu_help),   // Экран помощи
-    I_EFUNC("Open save menu",     "cj[hfytybt buhs",     BK_StartBindingKey, bk_menu_save),   // Сохранение игры
-    I_EFUNC("Open load menu",     "pfuheprf buhs",       BK_StartBindingKey, bk_menu_load),   // Загрузка игры
-    I_EFUNC("Open volume menu",   "yfcnhjqrb uhjvrjcnb", BK_StartBindingKey, bk_menu_volume), // Настройки громкости
-    I_EFUNC("Quick save",         ",scnhjt cj[hfytybt",  BK_StartBindingKey, bk_qsave),       // Быстрое сохранение
-    I_EFUNC("End game",           "pfrjyxbnm buhe",      BK_StartBindingKey, bk_end_game),    // Закончить игру
-    I_EFUNC("Quick load",         ",scnhfz pfuheprf",    BK_StartBindingKey, bk_qload),       // Быстрая загрузка
-    I_EFUNC("Quit game",          "ds[jl",               BK_StartBindingKey, bk_quit),        // Выход
-    I_EFUNC("Change gamma level", "ehjdtym ufvvs",       BK_StartBindingKey, bk_gamma),       // Уровень гаммы
-    I_EFUNC("Go to next level",   "cktle.obq ehjdtym",   BK_StartBindingKey, bk_nextlevel),   // Следующий уровень
-    I_EFUNC("Restart level/demo", "gthtpfgecr ehjdyz",   BK_StartBindingKey, bk_reloadlevel), // Перезапуск уровня
+    I_TITLE("Shortcut keys",      "Kekunci pintas"),
+    I_EFUNC("Open help",          "Buka skrin bantuan",        BK_StartBindingKey, bk_menu_help),   // Экран помощи
+    I_EFUNC("Open save menu",     "Buka menu simpan permainan",     BK_StartBindingKey, bk_menu_save),   // Сохранение игры
+    I_EFUNC("Open load menu",     "Buka menu muat permainan",       BK_StartBindingKey, bk_menu_load),   // Загрузка игры
+    I_EFUNC("Open volume menu",   "Buka menu kelantangan", BK_StartBindingKey, bk_menu_volume), // Настройки громкости
+    I_EFUNC("Quick save",         "Simpan pantas",  BK_StartBindingKey, bk_qsave),       // Быстрое сохранение
+    I_EFUNC("End game",           "Tamatkan permainan",      BK_StartBindingKey, bk_end_game),    // Закончить игру
+    I_EFUNC("Quick load",         "Muat pantas",    BK_StartBindingKey, bk_qload),       // Быстрая загрузка
+    I_EFUNC("Quit game",          "Keluar permainan",               BK_StartBindingKey, bk_quit),        // Выход
+    I_EFUNC("Change gamma level", "Ubah tahap gama",       BK_StartBindingKey, bk_gamma),       // Уровень гаммы
+    I_EFUNC("Go to next level",   "Pergi ke tahap seterusnya",   BK_StartBindingKey, bk_nextlevel),   // Следующий уровень
+    I_EFUNC("Restart level/demo", "Mula semula tahap/demo",   BK_StartBindingKey, bk_reloadlevel), // Перезапуск уровня
     I_EMPTY,
     I_SETMENU(NULL, NULL, &Bindings4Menu), // Далее >
     I_SETMENU(NULL, NULL, &Bindings2Menu), // < Назад
@@ -1039,7 +1039,7 @@ static MenuItem_t Bindings3Items[] = {
 MENU_STATIC_PAGED(Bindings3Menu,
     35, 35,
     25,
-    "Customize controls", "Yfcnhjqrb eghfdktybz", false, // Настройки управления
+    "Customize controls", "Suaikan kawalan", false, // Настройки управления
     Bindings3Items, false,
     M_RD_Draw_Bindings,
     &ControlsMenu,
@@ -1150,8 +1150,8 @@ MENU_STATIC_PAGED(Bindings6Menu,
 // -----------------------------------------------------------------------------
 
 static MenuItem_t ResetControlsItems[] = {
-    I_EFUNC("RECOMMENDED", "HTRJVTYLJDFYYJT", M_RD_ResetControls_Recommended, 0), // РЕКОМЕНДОВАННОЕ
-    I_EFUNC("ORIGINAL",    "JHBUBYFKMYJT",    M_RD_ResetControls_Original,    0), // ОРИГИНАЛЬНОЕ
+    I_EFUNC("RECOMMENDED", "DISYORKAN", M_RD_ResetControls_Recommended, 0), // РЕКОМЕНДОВАННОЕ
+    I_EFUNC("ORIGINAL",    "ASAL",    M_RD_ResetControls_Original,    0), // ОРИГИНАЛЬНОЕ
 };
 
 MENU_STATIC(ResetControlsMenu,
