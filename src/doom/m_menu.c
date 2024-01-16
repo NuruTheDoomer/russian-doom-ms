@@ -627,21 +627,21 @@ MENU_STATIC_SKILL(NewGameMenu,
 // =============================================================================
 
 static MenuItem_t RDOptionsItems[] = {
-    I_SETMENU("Rendering",        "Dbltj",          &Rendering1Menu),
-    I_SETMENU("Display",          "\"rhfy",         &DisplayMenu),
-    I_SETMENU("Sound",            "Felbj",          &SoundMenu),
-    I_SETMENU("Controls",         "Eghfdktybt",     &ControlsMenu),
-    I_SETMENU("Gameplay",         "Utqvgktq",       &Gameplay1Menu),
-    I_EFUNC(  "Level select",     "Ds,jh ehjdyz",   M_LevelSelect, 0),
-    I_EFUNC(  "End Game",         "Pfrjyxbnm buhe", M_EndGame,     0),
-    I_SETMENU("Reset settings",   "C,hjc yfcnhjtr", &ResetMenu),
-    I_LRFUNC( "Language:english", "Zpsr#heccrbq",   M_RD_ChangeLanguage)
+    I_SETMENU("Rendering",        "Pemaparan",          &Rendering1Menu),
+    I_SETMENU("Display",          "Paparan",         &DisplayMenu),
+    I_SETMENU("Sound",            "Suara",          &SoundMenu),
+    I_SETMENU("Controls",         "Kawalan",     &ControlsMenu),
+    I_SETMENU("Gameplay",         "Tatamain",       &Gameplay1Menu),
+    I_EFUNC(  "Level select",     "Pilih Tahap",   M_LevelSelect, 0),
+    I_EFUNC(  "End Game",         "Tamatkan permainan", M_EndGame,     0),
+    I_SETMENU("Reset settings",   "Tetap semula tetapan", &ResetMenu),
+    I_LRFUNC( "Language:english", "Bahasa:Melayu",   M_RD_ChangeLanguage)
 };
 
 MENU_STATIC(RDOptionsMenu,
     60, 60,
     22,
-    "OPTIONS", "YFCNHJQRB", false,
+    "OPTIONS", "TETAPAN", false,
     RDOptionsItems, true,
     NULL,
     &DoomMenu
@@ -658,14 +658,14 @@ static const PageDescriptor_t RenderingDescriptor = {
 };
 
 static MenuItem_t Rendering1Items[] = {
-    I_TITLE( "Rendering",                 "htylthbyu"), // Рендеринг
-    I_LRFUNC("Rendering resolution:",     "Hfphtitybt htylthbyuf:",          M_RD_Change_Resolution),
-    I_LRFUNC("Display aspect ratio:",     "Cjjnyjitybt cnjhjy \'rhfyf:",     M_RD_Change_Widescreen),
-    I_LRFUNC("Screen renderer:",          "Htylthth \'rhfyf:",               M_RD_Change_Renderer),
-    I_SWITCH("Vertical synchronization:", "Dthnbrfkmyfz cby[hjybpfwbz:",     M_RD_Change_VSync),
-    I_LRFUNC("FPS limit:",                "juhfybxtybt",                     M_RD_Change_MaxFPS),
-    I_LRFUNC("Performance counter:",      "Cxtnxbr ghjbpdjlbntkmyjcnb:",     M_RD_Change_PerfCounter),
-    I_SWITCH("Pixel scaling:",            "Gbrctkmyjt cukf;bdfybt:",         M_RD_Change_Smoothing),
+    I_TITLE( "Rendering",                 "Pemaparan"), // Рендеринг
+    I_LRFUNC("Rendering resolution:",     "Resolusi pemaparan:",          M_RD_Change_Resolution),
+    I_LRFUNC("Display aspect ratio:",     "Nisbah aspek paparan:",     M_RD_Change_Widescreen),
+    I_LRFUNC("Screen renderer:",          "Pemapar skrin:",               M_RD_Change_Renderer),
+    I_SWITCH("Vertical synchronization:", "Penyegerakan menegak:",     M_RD_Change_VSync),
+    I_LRFUNC("FPS limit:",                "Had BPS",                     M_RD_Change_MaxFPS),
+    I_LRFUNC("Performance counter:",      "Paparan prestasi:",     M_RD_Change_PerfCounter),
+    I_SWITCH("Pixel scaling:",            "Penskalaan piksel:",         M_RD_Change_Smoothing),
     I_SWITCH("Porch palette changing:",   "Bpvtytybt gfkbnhs rhftd 'rhfyf:", M_RD_Change_PorchFlashing),
     I_SWITCH("Diminished lighting:",      "Eufcfybt jcdtotybz:",             M_RD_Change_DiminishedLighting),
     I_EMPTY,
@@ -677,7 +677,7 @@ static MenuItem_t Rendering1Items[] = {
 MENU_STATIC_PAGED(Rendering1Menu,
     35, 35,
     25,
-    "RENDERING OPTIONS", "YFCNHJQRB DBLTJ", false, // НАСТРОЙКИ ВИДЕО
+    "RENDERING OPTIONS", "YFCNHJQRB", false, // НАСТРОЙКИ ВИДЕО
     Rendering1Items, false,
     M_RD_Draw_Rendering_1,
     &RDOptionsMenu,
@@ -685,17 +685,17 @@ MENU_STATIC_PAGED(Rendering1Menu,
 );
 
 static MenuItem_t Rendering2Items[] = {
-    I_TITLE( "Window options",                "Yfcnhjqrb jryf"), // Настройки окна
-    I_SWITCH("Bordered window:",              "jryj c hfvrjq:",             M_RD_Change_WindowBorder), // Окно с рамкой
-    I_LRFUNC("Window size:",                  "hfpvth jryf:",               M_RD_Change_WindowSize), // Размер окна
-    I_SWITCH("Window title:",                 "pfujkjdjr jryf:",            M_RD_Change_WindowTitle), // Заголовок окна
-    I_SWITCH("Always on top:",                "gjdth[ lheub[ jrjy:",        M_RD_Change_AlwaysOnTop), // Поверх других окон
+    I_TITLE( "Window options",                "Tetapan tetingkap"), // Настройки окна
+    I_SWITCH("Bordered window:",              "Tetingkap bersempadan:",             M_RD_Change_WindowBorder), // Окно с рамкой
+    I_LRFUNC("Window size:",                  "Saiz tetingkap:",               M_RD_Change_WindowSize), // Размер окна
+    I_SWITCH("Window title:",                 "Tajuk tetingkap:",            M_RD_Change_WindowTitle), // Заголовок окна
+    I_SWITCH("Always on top:",                "Sentiasa di atas:",        M_RD_Change_AlwaysOnTop), // Поверх других окон
     I_SWITCH("Preserve window aspect ratio:", "ghjgjhwbb jryf:",            M_RD_Change_WindowAspectRatio), // Пропорции окна
     I_TITLE( "Extra",                         "ljgjkybntkmyj"), // Дополнительно
-    I_LRFUNC("Show disk icon:",               "Jnj,hf;fnm pyfxjr lbcrtns:", M_RD_Change_DiskIcon), // Отображать значок дискеты
+    I_LRFUNC("Show disk icon:",               "Tunjuk ikon cakera:", M_RD_Change_DiskIcon), // Отображать значок дискеты
     I_LRFUNC("Screen wiping effect:",         "\'aatrn cvtys \'rhfyjd:",    M_RD_Change_Wiping), // Эффект смены экранов
-    I_SWITCH("Screenshot format:",            "Ajhvfn crhbyijnjd:",         M_RD_Change_Screenshots), // Формат скриншотов
-    I_SWITCH("Show ENDOOM screen:",           "Gjrfpsdfnm \'rhfy",          M_RD_Change_ENDOOM), // Показывать экран ENDOOM
+    I_SWITCH("Screenshot format:",            "Format tangkapan layar:",         M_RD_Change_Screenshots), // Формат скриншотов
+    I_SWITCH("Show ENDOOM screen:",           "Tunjuk skrin ENDOOM",          M_RD_Change_ENDOOM), // Показывать экран ENDOOM
     I_EMPTY,
     I_EMPTY,
     I_SETMENU(NULL, /* < Prev Page > */ NULL, &Rendering1Menu)  // < Назад
@@ -704,7 +704,7 @@ static MenuItem_t Rendering2Items[] = {
 MENU_STATIC_PAGED(Rendering2Menu,
     35, 35,
     25,
-    "RENDERING OPTIONS", "YFCNHJQRB DBLTJ", false, // НАСТРОЙКИ ВИДЕО
+    "RENDERING OPTIONS", "TETAPAN PEMAPARAN", false, // НАСТРОЙКИ ВИДЕО
     Rendering2Items, false,
     M_RD_Draw_Rendering_2,
     &RDOptionsMenu,
@@ -716,24 +716,24 @@ MENU_STATIC_PAGED(Rendering2Menu,
 // -----------------------------------------------------------------------------
 
 static MenuItem_t DisplayItems[] = {
-    I_TITLE(  "Screen",                    "\'rhfy"), // Экран
-    I_LRFUNC( "screen size",               "hfpvth buhjdjuj \'rhfyf", M_RD_Change_ScreenSize),
+    I_TITLE(  "Screen",                    "Skrin"), // Экран
+    I_LRFUNC( "screen size",               "Saiz Skrin", M_RD_Change_ScreenSize),
     I_EMPTY,
-    I_LRFUNC( "level brightness",          "ehjdtym jcdtotyyjcnb",    M_RD_Change_LevelBrightness),
+    I_LRFUNC( "level brightness",          "Kecerahan tahap",    M_RD_Change_LevelBrightness),
     I_EMPTY,
     I_LRFUNC( "menu shading",              "pfntvytybt ajyf vty.",    M_RD_Change_MenuShading),
     I_EMPTY,
-    I_SWITCH( "background detail:",        "ltnfkbpfwbz ajyf:",       M_RD_Change_BG_Detail),
-    I_SETMENU("color options...",          "yfcnhjqrb wdtnf>>>",      &ColorMenu),
-    I_TITLE(  "Interface",                 "bynthatqc"), // Интерфейс
-    I_SETMENU("messages and texts...",     "cjj,otybz b ntrcns>>>",   &MessagesMenu),
-    I_SETMENU("automap and statistics...", "rfhnf b cnfnbcnbrf>>>",   &AutomapMenu)
+    I_SWITCH( "background detail:",        "Kualiti latar belakang:",       M_RD_Change_BG_Detail),
+    I_SETMENU("color options...",          "tetapan warna...",      &ColorMenu),
+    I_TITLE(  "Interface",                 "Antaramuka"), // Интерфейс
+    I_SETMENU("messages and texts...",     "Mesej dan teks...",   &MessagesMenu),
+    I_SETMENU("automap and statistics...", "peta kawasan dan statistik",   &AutomapMenu)
 };
 
 MENU_STATIC(DisplayMenu,
     35, 35,
     25,
-    "DISPLAY OPTIONS", "YFCNHJQRB \"RHFYF", false, // НАСТРОЙКИ ЭКРАНА
+    "DISPLAY OPTIONS", "TETAPAN PAPARAN", false, // НАСТРОЙКИ ЭКРАНА
     DisplayItems, false,
     M_RD_Draw_Display,
     &RDOptionsMenu
@@ -757,7 +757,7 @@ static MenuItem_t ColorItems[] = {
 MENU_STATIC(ColorMenu,
     160, 160,
     25,
-    "COLOR OPTIONS", "YFCNHJQRF WDTNF", false,  // НАСТРОЙКИ ЦВЕТА
+    "COLOR OPTIONS", "TETAPAN WARNA", false,  // НАСТРОЙКИ ЦВЕТА
     ColorItems, false,
     M_RD_Draw_Colors,
     &DisplayMenu
@@ -768,26 +768,26 @@ MENU_STATIC(ColorMenu,
 // -----------------------------------------------------------------------------
 
 static MenuItem_t MessagesItems[] = {
-    I_TITLE( "General",             "jcyjdyjt"), // Основное
-    I_SWITCH("messages enabled:",   "jnj,hf;tybt cjj,otybq:",   M_RD_Change_Messages), // Отображение сообщений:
-    I_LRFUNC("alignment:",          "dshfdybdfybt:",            M_RD_Change_Msg_Alignment), // Выравнивание:
-    I_LRFUNC("message timeout",     "nfqvfen jnj,hf;tybz",      M_RD_Change_Msg_TimeOut), // Таймаут отображения
+    I_TITLE( "General",             "Umum"), // Основное
+    I_SWITCH("messages enabled:",   "mesej didayakan:",   M_RD_Change_Messages), // Отображение сообщений:
+    I_LRFUNC("alignment:",          "penjajaran:",            M_RD_Change_Msg_Alignment), // Выравнивание:
+    I_LRFUNC("message timeout",     "masa tamat mesej",      M_RD_Change_Msg_TimeOut), // Таймаут отображения
     I_EMPTY,
-    I_SWITCH("fading effect:",      "gkfdyjt bcxtpyjdtybt:",    M_RD_Change_Msg_Fade), // Плавное исчезновение:
-    I_SWITCH("text casts shadows:", "ntrcns jn,hfcsdf.n ntym:", M_RD_Change_ShadowedText), // Тексты отбрасывают тень:
-    I_TITLE( "Misc.",               "hfpyjt"), // Разное
-    I_LRFUNC("local time:",         "cbcntvyjt dhtvz:",         M_RD_Change_LocalTime), // Системное время:
-    I_TITLE( "Colors",              "wdtnf"), // Цвета
-    I_LRFUNC("item pickup:",        "gjkextybt ghtlvtnjd:",     M_RD_Change_Msg_Pickup_Color), // Получение предметов:
-    I_LRFUNC("revealed secret:",    "j,yfhe;tybt nfqybrjd:",    M_RD_Change_Msg_Secret_Color), // Обнаружение тайников:
-    I_LRFUNC("system message:",     "cbcntvyst cjj,otybz:",     M_RD_Change_Msg_System_Color), // Системные сообщения:
-    I_LRFUNC("netgame chat:",       "xfn ctntdjq buhs:",        M_RD_Change_Msg_Chat_Color)  // Чат сетевой игры:
+    I_SWITCH("fading effect:",      "kesan pudar:",    M_RD_Change_Msg_Fade), // Плавное исчезновение:
+    I_SWITCH("text casts shadows:", "teks memancar bayang-bayang:", M_RD_Change_ShadowedText), // Тексты отбрасывают тень:
+    I_TITLE( "Misc.",               "lain-lain"), // Разное
+    I_LRFUNC("local time:",         "masa tempatan:",         M_RD_Change_LocalTime), // Системное время:
+    I_TITLE( "Colors",              "warna"), // Цвета
+    I_LRFUNC("item pickup:",        "item didapati:",     M_RD_Change_Msg_Pickup_Color), // Получение предметов:
+    I_LRFUNC("revealed secret:",    "rahasia ditemukan:",    M_RD_Change_Msg_Secret_Color), // Обнаружение тайников:
+    I_LRFUNC("system message:",     "mesej sistem:",     M_RD_Change_Msg_System_Color), // Системные сообщения:
+    I_LRFUNC("netgame chat:",       "perbualan permainan rangkaian:",        M_RD_Change_Msg_Chat_Color)  // Чат сетевой игры:
 };
 
 MENU_STATIC(MessagesMenu,
     35, 35,
     25,
-    "MESSAGES AND TEXTS", "CJJ<OTYBZ B NTRCNS", false, // СООБЩЕНИЯ И ТЕКСТЫ
+    "MESSAGES AND TEXTS", "MESEJ DAN TEKS", false, // СООБЩЕНИЯ И ТЕКСТЫ
     MessagesItems, false,
     M_RD_Draw_MessagesSettings,
     &DisplayMenu
@@ -1770,7 +1770,7 @@ static void M_RD_Draw_Rendering_1 (void)
         // Экрнанный рендерер
         if (force_software_renderer == 1)
         {
-            RD_M_DrawTextSmallRUS("y*l", 158 + wide_delta, 55, CR_DARKRED); // Н/Д
+            RD_M_DrawTextSmallRUS("tidak tersedia", 158 + wide_delta, 55, CR_DARKRED); // Н/Д
         }
         else
         {
@@ -1801,11 +1801,11 @@ static void M_RD_Draw_Rendering_1 (void)
         // Вертикальная синхронизация
         if (force_software_renderer == 1)
         {
-            RD_M_DrawTextSmallRUS("y*l", 249 + wide_delta, 65, CR_DARKRED); // Н/Д
+            RD_M_DrawTextSmallRUS("tidak tersedia", 249 + wide_delta, 65, CR_DARKRED); // Н/Д
         }
         else
         {
-            RD_M_DrawTextSmallRUS(vsync ? "drk" : "tutup", 249 + wide_delta, 65, CR_NONE);
+            RD_M_DrawTextSmallRUS(vsync ? "buka" : "tutup", 249 + wide_delta, 65, CR_NONE);
         }
 
         // Ограничение FPS
@@ -1829,15 +1829,15 @@ static void M_RD_Draw_Rendering_1 (void)
         // Пиксельное сглаживание
         if (force_software_renderer == 1)
         {
-            RD_M_DrawTextSmallRUS("y*l", 219 + wide_delta, 95, CR_DARKRED); // Н/Д
+            RD_M_DrawTextSmallRUS("tidak tersedia", 219 + wide_delta, 95, CR_DARKRED); // Н/Д
         }
         else
         {
-            RD_M_DrawTextSmallRUS(smoothing ? "drk" : "tutup", 219 + wide_delta, 95, CR_NONE);
+            RD_M_DrawTextSmallRUS(smoothing ? "buka" : "tutup", 219 + wide_delta, 95, CR_NONE);
         }
 
         // Изменение палитры краёв экрана
-        RD_M_DrawTextSmallRUS(vga_porch_flash ? "drk" : "tutup", 274 + wide_delta, 105, CR_NONE);
+        RD_M_DrawTextSmallRUS(vga_porch_flash ? "buka" : "tutup", 274 + wide_delta, 105, CR_NONE);
 
         // Угасание освещения
         RD_M_DrawTextSmallRUS(smoothlight ? "gkfdyjt" : "jhbubyfkmyjt", 186 + wide_delta, 115, CR_NONE);
@@ -1924,7 +1924,7 @@ static void M_RD_Draw_Rendering_2 (void)
     else
     {
         // Окно с рамкой
-        RD_M_DrawTextSmallRUS(window_border ? "drk" : "tutup", 140 + wide_delta, 35, CR_NONE);
+        RD_M_DrawTextSmallRUS(window_border ? "buka" : "tutup", 140 + wide_delta, 35, CR_NONE);
 
         // Размер окна
         RD_M_DrawTextSmallENG(window_size, 128 + wide_delta, 45, fullscreen ? CR_DARKRED : CR_NONE);
@@ -1949,7 +1949,7 @@ static void M_RD_Draw_Rendering_2 (void)
         RD_M_DrawTextSmallRUS(window_title_short ? "rhfnrbq" : "gjlhj,ysq", 151 + wide_delta, 55, CR_NONE);
 
         // Поверх других окон
-        RD_M_DrawTextSmallRUS(window_ontop ? "drk" : "tutup", 182 + wide_delta, 65, CR_NONE);
+        RD_M_DrawTextSmallRUS(window_ontop ? "buka" : "tutup", 182 + wide_delta, 65, CR_NONE);
 
         // Пропорции окна
         RD_M_DrawTextSmallRUS(preserve_window_aspect_ratio  ? "abrcbhjdfyyst" : "cdj,jlyst", 152 + wide_delta, 75, CR_NONE);
@@ -1969,7 +1969,7 @@ static void M_RD_Draw_Rendering_2 (void)
 
         // Показывать экран ENDOOM
         RD_M_DrawTextSmallENG("ENDOOM:", 165 + wide_delta, 125, CR_NONE);
-        RD_M_DrawTextSmallRUS(show_endoom ? "drk" : "tutup", 222 + wide_delta, 125, CR_NONE);
+        RD_M_DrawTextSmallRUS(show_endoom ? "buka" : "tutup", 222 + wide_delta, 125, CR_NONE);
 
         //
         // Footer
@@ -2486,7 +2486,7 @@ static void M_RD_Draw_MessagesSettings(void)
     else
     {
         // Отображение сообщений
-        RD_M_DrawTextSmallRUS(showMessages ? "drk" : "tutup", 214 + wide_delta, 35, CR_NONE);
+        RD_M_DrawTextSmallRUS(showMessages ? "buka" : "tutup", 214 + wide_delta, 35, CR_NONE);
 
         // Выравнивание
         RD_M_DrawTextSmallRUS(messages_alignment == 1 ? "gj wtynhe" :             // по центру
@@ -2506,10 +2506,10 @@ static void M_RD_Draw_MessagesSettings(void)
                               "10 ctreyl", 133 + wide_delta, 65, CR_NONE);
 
         // Плавное исчезновение
-        RD_M_DrawTextSmallRUS(message_fade ? "drk" : "tutup", 198 + wide_delta, 75, CR_NONE);
+        RD_M_DrawTextSmallRUS(message_fade ? "buka" : "tutup", 198 + wide_delta, 75, CR_NONE);
 
         // Тексты отбрасывают тень
-        RD_M_DrawTextSmallRUS(draw_shadowed_text ? "drk" : "tutup", 226 + wide_delta, 85, CR_NONE);
+        RD_M_DrawTextSmallRUS(draw_shadowed_text ? "buka" : "tutup", 226 + wide_delta, 85, CR_NONE);
 
         // Системное время
         RD_M_DrawTextSmallRUS(local_time == 1 ? "12-xfcjdjt (xx:vv)" :
@@ -2521,7 +2521,7 @@ static void M_RD_Draw_MessagesSettings(void)
         // Получение предметов
         if (gamemission == jaguar)
         {
-            RD_M_DrawTextSmallRUS("y*l", 193 + wide_delta, 125, CR_NONE); // н/д
+            RD_M_DrawTextSmallRUS("tidak tersedia", 193 + wide_delta, 125, CR_NONE); // н/д
         }
         else
         {
@@ -2532,7 +2532,7 @@ static void M_RD_Draw_MessagesSettings(void)
         // Обнаружение тайников
         if (gamemission == jaguar)
         {
-            RD_M_DrawTextSmallRUS("y*l", 203 + wide_delta, 135, CR_NONE); // н/д
+            RD_M_DrawTextSmallRUS("tidak tersedia", 203 + wide_delta, 135, CR_NONE); // н/д
         }
         else
         {
@@ -2543,7 +2543,7 @@ static void M_RD_Draw_MessagesSettings(void)
         // Системные сообщения
         if (gamemission == jaguar)
         {
-            RD_M_DrawTextSmallRUS("y*l", 197 + wide_delta, 145, CR_NONE); // н/д
+            RD_M_DrawTextSmallRUS("tidak tersedia", 197 + wide_delta, 145, CR_NONE); // н/д
         }
         else
         {
@@ -2554,7 +2554,7 @@ static void M_RD_Draw_MessagesSettings(void)
         // Чат сетевой игры
         if (gamemission == jaguar)
         {
-            RD_M_DrawTextSmallRUS("y*l", 164 + wide_delta, 155, CR_NONE); // н/д
+            RD_M_DrawTextSmallRUS("tidak tersedia", 164 + wide_delta, 155, CR_NONE); // н/д
         }
         else
         {
@@ -2784,7 +2784,7 @@ static void M_RD_Draw_AutomapSettings(void)
         // Automap colors (English only names, different placement)
         if (gamemission == jaguar)
         {
-            RD_M_DrawTextSmallRUS("y*l", 154 + wide_delta, 35, CR_NONE); // н/д
+            RD_M_DrawTextSmallRUS("tidak tersedia", 154 + wide_delta, 35, CR_NONE); // н/д
         }
         else
         {
@@ -2797,23 +2797,23 @@ static void M_RD_Draw_AutomapSettings(void)
         }
 
         // Сглаживание линий
-        RD_M_DrawTextSmallRUS(automap_antialias ? "drk" : "tutup", 179 + wide_delta, 45,
+        RD_M_DrawTextSmallRUS(automap_antialias ? "buka" : "tutup", 179 + wide_delta, 45,
                               automap_antialias ? CR_GREEN : CR_DARKRED);
 
         // Режим вращения
-        RD_M_DrawTextSmallRUS(automap_rotate ? "drk" : "tutup", 159 + wide_delta, 55,
+        RD_M_DrawTextSmallRUS(automap_rotate ? "buka" : "tutup", 159 + wide_delta, 55,
                               automap_rotate ? CR_GREEN : CR_DARKRED);
 
         // Режим наложения
-        RD_M_DrawTextSmallRUS(automap_overlay ? "drk" : "tutup", 168 + wide_delta, 65,
+        RD_M_DrawTextSmallRUS(automap_overlay ? "buka" : "tutup", 168 + wide_delta, 65,
                               automap_overlay ? CR_GREEN : CR_DARKRED);
 
         // Режим следования
-        RD_M_DrawTextSmallRUS(automap_follow ? "drk" : "tutup", 173 + wide_delta, 95,
+        RD_M_DrawTextSmallRUS(automap_follow ? "buka" : "tutup", 173 + wide_delta, 95,
                               automap_follow ? CR_GREEN : CR_DARKRED);
 
         // Сетка
-        RD_M_DrawTextSmallRUS(automap_grid ? "drk" : "tutup", 83 + wide_delta, 105,
+        RD_M_DrawTextSmallRUS(automap_grid ? "buka" : "tutup", 83 + wide_delta, 105,
                               automap_grid ? CR_GREEN : CR_DARKRED);
 
         // Размер сетки
@@ -2824,7 +2824,7 @@ static void M_RD_Draw_AutomapSettings(void)
         // Цвет отметок
         if (gamemission == jaguar)
         {
-            RD_M_DrawTextSmallRUS("y*l", 137 + wide_delta, 125, CR_NONE); // н/д
+            RD_M_DrawTextSmallRUS("tidak tersedia", 137 + wide_delta, 125, CR_NONE); // н/д
         }
         else
         {
@@ -2833,7 +2833,7 @@ static void M_RD_Draw_AutomapSettings(void)
         }
 
         // Подсвечивать тайники
-        RD_M_DrawTextSmallRUS(automap_secrets ? "drk" : "tutup", 199 + wide_delta, 135,
+        RD_M_DrawTextSmallRUS(automap_secrets ? "buka" : "tutup", 199 + wide_delta, 135,
                               automap_secrets ? CR_GREEN : CR_DARKRED);
 
         //
@@ -3012,7 +3012,7 @@ static void M_RD_Draw_StatsSettings(void)
                               stats_level_name ? CR_GREEN : CR_DARKRED);
 
         // Окрашивание
-        RD_M_DrawTextSmallRUS(stats_color ? "drk" : "tutup",
+        RD_M_DrawTextSmallRUS(stats_color ? "buka" : "tutup",
                               133 + wide_delta, 105,
                               stats_color ? CR_GREEN : CR_DARKRED);
 
@@ -3229,10 +3229,10 @@ static void M_RD_Draw_Audio_System(void)
         RD_M_DrawTextSmallRUS(snd_monomode ? "vjyj" : "cnthtj", 231 + wide_delta, 95, CR_NONE);
 
         // Произвольный питч-шифтинг
-        RD_M_DrawTextSmallRUS(snd_pitchshift ? "drk" : "tutup", 242 + wide_delta, 105, CR_NONE);
+        RD_M_DrawTextSmallRUS(snd_pitchshift ? "buka" : "tutup", 242 + wide_delta, 105, CR_NONE);
 
         // Звук в неактивном окне
-        RD_M_DrawTextSmallRUS(mute_inactive_window ? "tutup" : "drk", 208 + wide_delta, 115, CR_NONE);
+        RD_M_DrawTextSmallRUS(mute_inactive_window ? "tutup" : "buka", 208 + wide_delta, 115, CR_NONE);
     }
 
     // [JN] Speaker test routine.
@@ -3245,7 +3245,7 @@ static void M_RD_Draw_Audio_System(void)
                 if (english_language)
                 RD_M_DrawTextSmallCenteredENG("ENABLE DIGITAL EFFECTS FIRST", 156, CR_WHITE);
                 else
-                RD_M_DrawTextSmallCenteredRUS("drk.xbnt wbahjdst \'aatrns!", 156, CR_WHITE);  // включите цифровые эффекты!
+                RD_M_DrawTextSmallCenteredRUS("buka.xbnt wbahjdst \'aatrns!", 156, CR_WHITE);  // включите цифровые эффекты!
             }
             speaker_test_left = false;
             speaker_test_right = false;
@@ -3506,17 +3506,17 @@ static void M_RD_Draw_Controls(void)
     else
     {
         // Режим постоянного бега
-        RD_M_DrawTextSmallRUS(alwaysRun ? "drk" : "tutup", 219 + wide_delta, 55, CR_NONE);
+        RD_M_DrawTextSmallRUS(alwaysRun ? "buka" : "tutup", 219 + wide_delta, 55, CR_NONE);
 
         // Обзор мышью
-        RD_M_DrawTextSmallRUS(mlook ? "drk" : "tutup", 135 + wide_delta, 135, CR_NONE);
+        RD_M_DrawTextSmallRUS(mlook ? "buka" : "tutup", 135 + wide_delta, 135, CR_NONE);
 
         // Вертикальная инверсия
-        RD_M_DrawTextSmallRUS(mouse_y_invert ? "drk" : "tutup", 207 + wide_delta, 145,
+        RD_M_DrawTextSmallRUS(mouse_y_invert ? "buka" : "tutup", 207 + wide_delta, 145,
                               !mlook ? CR_DARKRED : CR_NONE);
 
         // Вертикальное перемещение
-        RD_M_DrawTextSmallRUS(!novert ? "drk" : "tutup", 235 + wide_delta, 155,
+        RD_M_DrawTextSmallRUS(!novert ? "buka" : "tutup", 235 + wide_delta, 155,
                               mlook ? CR_DARKRED : CR_NONE);
     }
 
@@ -4312,8 +4312,8 @@ static void M_RD_Draw_Gameplay_1(void)
                               improved_fuzz > 0 ? CR_GREEN : CR_DARKRED);
 
         // Разноцветная кровь и трупы
-        RD_M_DrawTextSmallRUS(colored_blood == 1 ? "drk" :
-                              colored_blood == 2 ? "drk+iev" : "tutup",
+        RD_M_DrawTextSmallRUS(colored_blood == 1 ? "buka" :
+                              colored_blood == 2 ? "buka+iev" : "tutup",
                               242 + wide_delta, 95, colored_blood ? CR_GREEN : CR_DARKRED);
 
         // Анимация жидкостей
@@ -4489,7 +4489,7 @@ static void M_RD_Draw_Gameplay_2(void)
 
         if (sbar_colored == 0 || gamemission == jaguar)
         {
-            RD_M_DrawTextSmallRUS("y*l", 168 + wide_delta, 75, CR_DARKRED);
+            RD_M_DrawTextSmallRUS("tidak tersedia", 168 + wide_delta, 75, CR_DARKRED);
         }
         else
         {
@@ -4500,7 +4500,7 @@ static void M_RD_Draw_Gameplay_2(void)
         // Нормальное значение
         if (sbar_colored == 0 || gamemission == jaguar)
         {
-            RD_M_DrawTextSmallRUS("y*l", 191 + wide_delta, 85, CR_DARKRED);
+            RD_M_DrawTextSmallRUS("tidak tersedia", 191 + wide_delta, 85, CR_DARKRED);
         }
         else
         {
@@ -4511,7 +4511,7 @@ static void M_RD_Draw_Gameplay_2(void)
         // Низкое значение
         if (sbar_colored == 0 || gamemission == jaguar)
         {
-            RD_M_DrawTextSmallRUS("y*l", 158 + wide_delta, 95, CR_DARKRED);
+            RD_M_DrawTextSmallRUS("tidak tersedia", 158 + wide_delta, 95, CR_DARKRED);
         }
         else
         {
@@ -4522,7 +4522,7 @@ static void M_RD_Draw_Gameplay_2(void)
         // Низкое значение
         if (sbar_colored == 0 || gamemission == jaguar)
         {
-            RD_M_DrawTextSmallRUS("y*l", 197 + wide_delta, 105, CR_DARKRED);
+            RD_M_DrawTextSmallRUS("tidak tersedia", 197 + wide_delta, 105, CR_DARKRED);
         }
         else
         {
@@ -4533,7 +4533,7 @@ static void M_RD_Draw_Gameplay_2(void)
         // Тип брони 1
         if (sbar_colored == 0 || gamemission == jaguar)
         {
-            RD_M_DrawTextSmallRUS("y*l", 120 + wide_delta, 115, CR_DARKRED);
+            RD_M_DrawTextSmallRUS("tidak tersedia", 120 + wide_delta, 115, CR_DARKRED);
         }
         else
         {
@@ -4544,7 +4544,7 @@ static void M_RD_Draw_Gameplay_2(void)
         // Тип брони 2
         if (sbar_colored == 0 || gamemission == jaguar)
         {
-            RD_M_DrawTextSmallRUS("y*l", 123 + wide_delta, 125, CR_DARKRED);
+            RD_M_DrawTextSmallRUS("tidak tersedia", 123 + wide_delta, 125, CR_DARKRED);
         }
         else
         {
@@ -4555,7 +4555,7 @@ static void M_RD_Draw_Gameplay_2(void)
         // Отсутствие брони
         if (sbar_colored == 0 || gamemission == jaguar)
         {
-            RD_M_DrawTextSmallRUS("y*l", 167 + wide_delta, 135, CR_DARKRED);
+            RD_M_DrawTextSmallRUS("tidak tersedia", 167 + wide_delta, 135, CR_DARKRED);
         }
         else
         {
@@ -4958,7 +4958,7 @@ static void M_RD_Draw_Gameplay_4(void)
             RD_M_DrawTextSmallRUS(horizontal_autoaim == 0 ? "[bncrfys" :  // хитсканы
                                   horizontal_autoaim == 1 ? "cyfhzls" :   // снаряды
                                   horizontal_autoaim == 2 ? "tutup" : 
-                                                            "drk", 204 + wide_delta, 135,
+                                                            "buka", 204 + wide_delta, 135,
                                                   netgame ? CR_DARKRED :
                                   horizontal_autoaim == 0 ? CR_DARKGREEN :
                                   horizontal_autoaim == 1 ? CR_DARKGREEN :
@@ -5637,7 +5637,7 @@ static void M_RD_Draw_Level_1(void)
         // Эпизод
         if (logical_gamemission != doom)
         {
-            RD_M_DrawTextSmallRUS("y*l", 226 + wide_delta, 31, CR_DARKRED);
+            RD_M_DrawTextSmallRUS("tidak tersedia", 226 + wide_delta, 31, CR_DARKRED);
         }
         else
         {
@@ -5695,7 +5695,7 @@ static void M_RD_Draw_Level_1(void)
         if (logical_gamemission == doom || gamemission == jaguar)
         {
             // Not available in Doom 1 and Jaguar
-            RD_M_DrawTextSmallRUS("y*l", 226 + wide_delta, 121, CR_DARKRED);
+            RD_M_DrawTextSmallRUS("tidak tersedia", 226 + wide_delta, 121, CR_DARKRED);
         }
         else
         {
@@ -5715,7 +5715,7 @@ static void M_RD_Draw_Level_1(void)
         if (gamemode == shareware)
         {
             // Not available in shareware
-            RD_M_DrawTextSmallRUS("y*l", 226 + wide_delta, 151, CR_DARKRED);
+            RD_M_DrawTextSmallRUS("tidak tersedia", 226 + wide_delta, 151, CR_DARKRED);
         }
         else
         {
@@ -5727,7 +5727,7 @@ static void M_RD_Draw_Level_1(void)
         if (gamemode == shareware)
         {
             // Not available in shareware
-            RD_M_DrawTextSmallRUS("y*l", 226 + wide_delta, 161, CR_DARKRED);
+            RD_M_DrawTextSmallRUS("tidak tersedia", 226 + wide_delta, 161, CR_DARKRED);
         }
         else
         {
