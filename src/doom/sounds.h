@@ -2,7 +2,7 @@
 // Copyright(C) 1993-1996 Id Software, Inc.
 // Copyright(C) 2005-2014 Simon Howard
 // Copyright(C) 2016-2023 Julian Nechaevsky
-// Copyright(C) 2020-2023 Leonid Murin (Dasperal)
+// Copyright(C) 2020-2024 Leonid Murin (Dasperal)
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -85,6 +85,16 @@ typedef enum
     mus_e5m7,
     mus_e5m8,
     mus_e5m9,
+    // [Dasperal] Sigil 2
+    mus_e6m1,
+    mus_e6m2,
+    mus_e6m3,
+    mus_e6m4,
+    mus_e6m5,
+    mus_e6m6,
+    mus_e6m7,
+    mus_e6m8,
+    mus_e6m9,
     mus_inter,
     mus_intro,
     mus_bunny,

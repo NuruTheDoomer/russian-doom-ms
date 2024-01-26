@@ -3,7 +3,7 @@
 // Copyright(C) 1993-2008 Raven Software
 // Copyright(C) 2005-2014 Simon Howard
 // Copyright(C) 2016-2023 Julian Nechaevsky
-// Copyright(C) 2020-2023 Leonid Murin (Dasperal)
+// Copyright(C) 2020-2024 Leonid Murin (Dasperal)
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -902,7 +902,10 @@ boolean G_Responder(event_t * ev)
         if(!inventory)
         {
             inventory = true;
-            curpos = init_inventory_cursor(plr->inventorySlotNum, inv_ptr);
+            if(center_inventory_cursor && !vanillaparm)
+            {
+                curpos = init_inventory_cursor(plr->inventorySlotNum, inv_ptr);
+            }
             return false;
         }
         inv_ptr--;
@@ -926,7 +929,10 @@ boolean G_Responder(event_t * ev)
         if(!inventory)
         {
             inventory = true;
-            curpos = init_inventory_cursor(plr->inventorySlotNum, inv_ptr);
+            if(center_inventory_cursor && !vanillaparm)
+            {
+                curpos = init_inventory_cursor(plr->inventorySlotNum, inv_ptr);
+            }
             return false;
         }
         inv_ptr++;

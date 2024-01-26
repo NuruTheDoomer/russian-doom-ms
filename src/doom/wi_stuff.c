@@ -2,7 +2,7 @@
 // Copyright(C) 1993-1996 Id Software, Inc.
 // Copyright(C) 2005-2014 Simon Howard
 // Copyright(C) 2016-2023 Julian Nechaevsky
-// Copyright(C) 2020-2023 Leonid Murin (Dasperal)
+// Copyright(C) 2020-2024 Leonid Murin (Dasperal)
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -1769,7 +1769,10 @@ static void WI_drawStats (void)
 
     WI_drawTime((origwidth/2 - SP_TIMEX)+wide_delta, SP_TIMEY, cnt_time, true);
 
-    if (wbs->epsd < 4+1) // [JN] Sigil: extra episode
+    if(wbs->epsd < 3
+    || (wbs->epsd == 3 && singleplayer) // [crispy] Episode 4
+    || wbs->epsd == 4  // [crispy] Sigil
+    || wbs->epsd == 5) // [crispy] Sigil 2
     {
         V_DrawShadowedPatchDoom(origwidth/2 + SP_TIMEX, SP_TIMEY, 
                                 english_language ? par : par_rus);
@@ -2124,6 +2127,10 @@ static void WI_loadUnloadData (load_callback_t callback)
     {
         M_StringCopy(name, DEH_String("SIGILINT"), sizeof(name));
     }
+    else if (sgl2_loaded && wbs->epsd == 5 && W_CheckNumForName(DEH_String("SIGILIN2")) != -1) // [Dasperal] Sigil 2
+    {
+        M_StringCopy(name, DEH_String("SIGILIN2"), sizeof(name));
+    }
     else
     {
         DEH_snprintf(name, sizeof(name), "WIMAP%d", wbs->epsd);
@@ -2271,7 +2278,7 @@ static void WI_initVariables (wbstartstruct_t *wbstartstruct)
     if (!wbs->maxsecret)
     wbs->maxsecret = 1;
 
-    if (gamemode != retail && (!sgl_loaded || wbs->epsd == 3))
+    if(gamemode != retail && (!(sgl_loaded || sgl2_loaded) || wbs->epsd == 3))
         if (wbs->epsd > 2)
             wbs->epsd -= 3;
 }

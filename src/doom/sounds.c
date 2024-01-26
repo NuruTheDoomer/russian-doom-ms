@@ -2,7 +2,7 @@
 // Copyright(C) 1993-1996 Id Software, Inc.
 // Copyright(C) 2005-2014 Simon Howard
 // Copyright(C) 2016-2023 Julian Nechaevsky
-// Copyright(C) 2020-2023 Leonid Murin (Dasperal)
+// Copyright(C) 2020-2024 Leonid Murin (Dasperal)
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -80,6 +80,16 @@ musicinfo_t S_music[] =
     MUSIC("e5m7"),
     MUSIC("e5m8"),
     MUSIC("e5m9"),
+    // [Dasperal] Sigil 2
+    MUSIC("e6m1"),
+    MUSIC("e6m2"),
+    MUSIC("e6m3"),
+    MUSIC("e6m4"),
+    MUSIC("e6m5"),
+    MUSIC("e6m6"),
+    MUSIC("e6m7"),
+    MUSIC("e6m8"),
+    MUSIC("e6m9"),
     MUSIC("inter"),
     MUSIC("intro"),
     MUSIC("bunny"),

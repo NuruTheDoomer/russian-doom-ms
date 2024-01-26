@@ -2,7 +2,7 @@
 // Copyright(C) 1993-1996 Id Software, Inc.
 // Copyright(C) 2005-2014 Simon Howard
 // Copyright(C) 2016-2023 Julian Nechaevsky
-// Copyright(C) 2020-2023 Leonid Murin (Dasperal)
+// Copyright(C) 2020-2024 Leonid Murin (Dasperal)
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -80,6 +80,7 @@ static textscreen_t textscreens[] =
     { doom,      3, 8,  "MFLR8_4",   E3TEXT, E3TEXT_RUS},
     { doom,      4, 8,  "MFLR8_3",   E4TEXT, E4TEXT_RUS},
     { doom,      5, 8,  "FLOOR7_2",  E5TEXT, E5TEXT_RUS}, // [crispy] & [JN] Sigil
+    { doom,      6, 8,  "FLOOR7_2",  E6TEXT, E6TEXT_RUS}, // [Dasperal] Sigil 2
 
     { doom2,     1, 6,  "SLIME16",   C1TEXT, C1TEXT_RUS},
     { doom2,     1, 11, "RROCK14",   C2TEXT, C2TEXT_RUS},
@@ -1025,6 +1026,8 @@ static void F_ArtScreenDrawer (void)
             }
             // [crispy] Sigil
             case 5:
+            // [Dasperal] Sigil 2
+            case 6:
             {
                 lumpname = "SIGILEND";
                 if (W_CheckNumForName(DEH_String(lumpname)) == -1)

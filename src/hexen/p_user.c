@@ -3,7 +3,7 @@
 // Copyright(C) 1993-2008 Raven Software
 // Copyright(C) 2005-2014 Simon Howard
 // Copyright(C) 2016-2023 Julian Nechaevsky
-// Copyright(C) 2020-2023 Leonid Murin (Dasperal)
+// Copyright(C) 2020-2024 Leonid Murin (Dasperal)
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -1492,8 +1492,9 @@ void P_PlayerUseArtifact(player_t * player, artitype_t arti)
                     ArtifactFlash = 4;
                 }
             }
-            else if (arti < arti_firstpuzzitem)
-            {                   // Unable to use artifact, advance pointer
+            else if(arti < arti_firstpuzzitem && (skip_unusable_artifact || vanillaparm || !singleplayer))
+            {
+                // Unable to use artifact, advance pointer
                 P_PlayerNextArtifact(player);
             }
             break;

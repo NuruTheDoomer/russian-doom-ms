@@ -2,7 +2,7 @@
 // Copyright(C) 1993-1996 Id Software, Inc.
 // Copyright(C) 2005-2014 Simon Howard
 // Copyright(C) 2016-2023 Julian Nechaevsky
-// Copyright(C) 2020-2023 Leonid Murin (Dasperal)
+// Copyright(C) 2020-2024 Leonid Murin (Dasperal)
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -360,7 +360,7 @@ void S_Start (void)
             mus_e1m6,   // e4m9
         };
 
-        if (gameepisode < 4 || gameepisode == 5) // [crispy] Sigil 
+        if (gameepisode < 4 || gameepisode == 5 || gameepisode == 6) // [crispy] Sigil and Sigil 2
         {
             mnum = mus_e1m1 + (gameepisode-1)*9 + gamemap-1;
         }

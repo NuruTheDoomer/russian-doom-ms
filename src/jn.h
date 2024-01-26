@@ -1,7 +1,7 @@
 //
 // Copyright(C) 2014 Fabian Greffrath
 // Copyright(C) 2016-2023 Julian Nechaevsky
-// Copyright(C) 2020-2023 Leonid Murin (Dasperal)
+// Copyright(C) 2020-2024 Leonid Murin (Dasperal)
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -289,6 +289,7 @@ extern int stbar_color_armor_0;
 extern int ammo_widget;
 extern int ammo_widget_colored;
 extern int weapon_widget;
+extern int center_inventory_cursor;
 
 // Gameplay: Audible
 extern int z_axis_sfx;
@@ -329,6 +330,7 @@ extern int pistol_start;
 extern int breathing;
 extern int unlimited_lost_souls;
 extern int fast_quickload;
+extern int skip_unusable_artifact;
 
 // Gameplay: Demos
 extern int demotimer;

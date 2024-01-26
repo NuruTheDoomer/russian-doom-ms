@@ -2,7 +2,7 @@
 // Copyright(C) 1993-1996 Id Software, Inc.
 // Copyright(C) 2005-2014 Simon Howard
 // Copyright(C) 2016-2023 Julian Nechaevsky
-// Copyright(C) 2020-2023 Leonid Murin (Dasperal)
+// Copyright(C) 2020-2024 Leonid Murin (Dasperal)
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -29,6 +29,7 @@
 #include "g_game.h"
 #include "doomstat.h"
 #include "jn.h"
+#include "d_main.h"
 
 
 #define	SKULLSPEED  (20*FRACUNIT)
@@ -1983,9 +1984,13 @@ static boolean CheckBossEnd (mobjtype_t motype)
             return (gamemap == 6 && motype == MT_CYBORG)
                 || (gamemap == 8 && motype == MT_SPIDER);
 
-            // [crispy] Sigil
+            // [crispy] no trigger for Sigil
             case 5:
-            return false; 
+            return (gamemap == 8 && !sgl_loaded);
+
+            // [crispy] no trigger for Sigil II
+            case 6:
+            return (gamemap == 8 && !sgl2_loaded);
 
             default:
             return gamemap == 8;

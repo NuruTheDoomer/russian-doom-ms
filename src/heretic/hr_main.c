@@ -3,7 +3,7 @@
 // Copyright(C) 1993-2008 Raven Software
 // Copyright(C) 2005-2014 Simon Howard
 // Copyright(C) 2016-2023 Julian Nechaevsky
-// Copyright(C) 2020-2023 Leonid Murin (Dasperal)
+// Copyright(C) 2020-2024 Leonid Murin (Dasperal)
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -189,6 +189,7 @@ int flip_weapons = 0;
 // Gameplay: Status bar
 int ammo_widget = 0;
 int ammo_widget_colored = 1;
+int center_inventory_cursor = 1;
 
 // Gameplay: Physical
 int improved_collision = 1;
@@ -220,6 +221,7 @@ int fix_map_errors = 1;
 int flip_levels = 0;
 int breathing = 0;
 int pistol_start = 0;
+int skip_unusable_artifact = 0;
 
 // Gameplay: Demos
 int demotimer = 0;
@@ -1122,8 +1124,9 @@ void D_BindVariables(void)
     M_BindIntVariable("flip_weapons",           &flip_weapons);
 
     // Gameplay: Status bar
-    M_BindIntVariable("ammo_widget",            &ammo_widget);
-    M_BindIntVariable("ammo_widget_colored",    &ammo_widget_colored);
+    M_BindIntVariable("ammo_widget",             &ammo_widget);
+    M_BindIntVariable("ammo_widget_colored",     &ammo_widget_colored);
+    M_BindIntVariable("center_inventory_cursor", &center_inventory_cursor);
 
     // Gameplay: Physical
     M_BindIntVariable("improved_collision",     &improved_collision);
@@ -1155,6 +1158,7 @@ void D_BindVariables(void)
     M_BindIntVariable("flip_levels",            &flip_levels);
     M_BindIntVariable("breathing",              &breathing);
     M_BindIntVariable("pistol_start",           &pistol_start);
+    M_BindIntVariable("skip_unusable_artifact", &skip_unusable_artifact);
 
     // Gameplay: Demos
     M_BindIntVariable("demotimer",              &demotimer);

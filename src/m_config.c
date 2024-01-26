@@ -3,7 +3,7 @@
 // Copyright(C) 1993-2008 Raven Software
 // Copyright(C) 2005-2014 Simon Howard
 // Copyright(C) 2016-2023 Julian Nechaevsky
-// Copyright(C) 2020-2023 Leonid Murin (Dasperal)
+// Copyright(C) 2020-2024 Leonid Murin (Dasperal)
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -629,6 +629,7 @@ static default_t defaults_list[] =
     CONFIG_VARIABLE_INT(ammo_widget),
     CONFIG_VARIABLE_INT(ammo_widget_colored),
     CONFIG_VARIABLE_INT(weapon_widget),
+    CONFIG_VARIABLE_INT(center_inventory_cursor),
 
     // Gameplay: Audible
     CONFIG_VARIABLE_INT(z_axis_sfx),
@@ -669,6 +670,7 @@ static default_t defaults_list[] =
     CONFIG_VARIABLE_INT(breathing),
     CONFIG_VARIABLE_INT(unlimited_lost_souls),
     CONFIG_VARIABLE_INT(fast_quickload),
+    CONFIG_VARIABLE_INT(skip_unusable_artifact),
 
     // Gameplay: Demos
     CONFIG_VARIABLE_INT(demotimer),

@@ -2,7 +2,7 @@
 // Copyright(C) 1993-1996 Id Software, Inc.
 // Copyright(C) 2005-2014 Simon Howard
 // Copyright(C) 2016-2023 Julian Nechaevsky
-// Copyright(C) 2020-2023 Leonid Murin (Dasperal)
+// Copyright(C) 2020-2024 Leonid Murin (Dasperal)
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -44,6 +44,6 @@ void D_StartTitle (void);
 
 extern gameaction_t gameaction;
 extern boolean oldest_version;
-extern boolean sgl_loaded, sgl_compat_loaded, mlvls_loaded, havemap33;
+extern boolean sgl_loaded, sgl_compat_loaded, sgl2_loaded, mlvls_loaded, havemap33;
 
 extern void EnableLoadingDisk (void);

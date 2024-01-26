@@ -2,7 +2,7 @@
 // Copyright(C) 1993-1996 Id Software, Inc.
 // Copyright(C) 2005-2014 Simon Howard
 // Copyright(C) 2016-2023 Julian Nechaevsky
-// Copyright(C) 2020-2023 Leonid Murin (Dasperal)
+// Copyright(C) 2020-2024 Leonid Murin (Dasperal)
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -1410,12 +1410,15 @@ void G_ScreenShot (void)
 
 
 // DOOM Par Times
-static const int pars[4][10] =
+static const int pars[7][10] =
 { 
     {0}, 
-    {0, 30, 75, 120,  90, 165, 180, 180, 30, 165},  // Episode 1
-    {0, 90, 90,  90, 120,  90, 360, 240, 30, 170},  // Episode 2
-    {0, 90, 45,  90, 150,  90,  90, 165, 30, 135}   // Episode 3
+    {0, 30,  75,  120, 90,  165, 180, 180, 30,  165}, // Episode 1
+    {0, 90,  90,  90,  120, 90,  360, 240, 30,  170}, // Episode 2
+    {0, 90,  45,  90,  150, 90,  90,  165, 30,  135}, // Episode 3
+    {0, 165, 255, 135, 150, 180, 390, 135, 360, 180}, // [crispy] Episode 4 par times from the BFG Edition
+    {0, 90,  150, 360, 420, 780, 420, 780, 300, 660}, // [JN] Episode 5 par times from Sigil v1.21
+    {0, 480, 300, 240, 420, 510, 840, 960, 390, 450}  // [Dasperal] Episode 6 par times from Sigil II v1.0
 }; 
 
 // DOOM II Par Times
@@ -1425,18 +1428,6 @@ static const int cpars[32] =
     210, 150, 150, 150, 210, 150, 420, 150, 210, 150,   // 11-20
     240, 150, 180, 150, 150, 300, 330, 420, 300, 180,   // 21-30
     120, 30                                             // 31-32
-};
-
-// [crispy] Episode 4 par times from the BFG Edition
-static const int e4pars[10] =
-{
-    0, 165, 255, 135, 150, 180, 390, 135, 360, 180
-};
-
-// [JN] Sigil par times
-static const int e5pars[10] =
-{
-    0, 90, 150, 360, 420, 780, 420, 780, 300, 660
 };
 
 // [JN] Press Beta Par Times
@@ -1633,24 +1624,21 @@ void G_DoCompleted (void)
             switch (gameepisode) 
             { 
                 case 1:
-                wminfo.next = 3;
-                break;
-
+                case 6: // [Dasperal] Sigil 2
+                    wminfo.next = 3;
+                    break;
                 case 2:
-                wminfo.next = 5;
-                break;
-
+                    wminfo.next = 5;
+                    break;
                 case 3:
-                wminfo.next = 6;
-                break;
-
+                    wminfo.next = 6;
+                    break;
                 case 4:
-                wminfo.next = 2;
-                break;
-
+                    wminfo.next = 2;
+                    break;
                 case 5: // [crispy] Sigil
-                wminfo.next = 6; 
-                break; 
+                    wminfo.next = 6;
+                    break;
             }                
         }
 
@@ -1685,24 +1673,20 @@ void G_DoCompleted (void)
             wminfo.partime = TICRATE*cpars[gamemap-1];
         }
     }
-    else if (gameepisode < 4)
+    else if(gameepisode < 4
+         || (gameepisode == 4 && singleplayer)
+         || gameepisode == 5
+         || gameepisode == 6)
     {
         // [crispy] support [PARS] sections in BEX files
-        if (bex_pars[gameepisode][gamemap])
+        if(bex_pars[gameepisode][gamemap])
         {
             wminfo.partime = TICRATE*bex_pars[gameepisode][gamemap];
         }
         else
-        wminfo.partime = TICRATE*pars[gameepisode][gamemap];
-    }
-    else if (gameepisode == 4 && singleplayer)
-    {
-        wminfo.partime = TICRATE*e4pars[gamemap];
-    }
-    else if (gameepisode == 5)
-    {
-        // [JN] Sigil
-        wminfo.partime = TICRATE*e5pars[gamemap];
+        {
+            wminfo.partime = TICRATE * pars[gameepisode][gamemap];
+        }
     }
     else
     {
@@ -2193,23 +2177,29 @@ G_InitNew
     if (skill > sk_ultranm)
     skill = sk_ultranm;
 
-    if (gameversion >= exe_ultimate)
+    if(gameversion >= exe_ultimate)
     {
-        if (episode == 0)
-        {
+        if(episode == 0)
             episode = 4;
-        }
+        if(episode > 6)
+            episode = 6;
+        if(episode == 6 && !sgl2_loaded)
+            episode = 5;
+        if(episode == 5 && !sgl_loaded)
+            episode = 4;
     }
     else
     {
-        if (episode < 1)
-        {
+        if(episode < 1)
             episode = 1;
-        }
-        if ((episode > 3 && !sgl_loaded) || (episode == 4 && sgl_loaded))
-        {
+        if(episode == 4)
             episode = 3;
-        }
+        if(episode > 6)
+            episode = 6;
+        if(episode == 6 && !sgl2_loaded)
+            episode = 5;
+        if(episode == 5 && !sgl_loaded)
+            episode = 3;
     }
 
     if (episode > 1 && gamemode == shareware)
@@ -2335,6 +2325,14 @@ G_InitNew
             case 5: // [crispy] Sigil
             skytexturename = "SKY5_ZD";
             if (R_CheckTextureNumForName(DEH_String(skytexturename)) == -1)
+            {
+                skytexturename = "SKY3";
+            }
+            break;
+
+            case 6: // [Dasperal] Sigil 2
+            skytexturename = "SKY6_ZD";
+            if(R_CheckTextureNumForName(DEH_String(skytexturename)) == -1)
             {
                 skytexturename = "SKY3";
             }

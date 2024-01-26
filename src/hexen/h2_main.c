@@ -3,7 +3,7 @@
 // Copyright(C) 1993-2008 Raven Software
 // Copyright(C) 2005-2014 Simon Howard
 // Copyright(C) 2016-2023 Julian Nechaevsky
-// Copyright(C) 2020-2023 Leonid Murin (Dasperal)
+// Copyright(C) 2020-2024 Leonid Murin (Dasperal)
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -226,6 +226,7 @@ int negative_health = 0;
 int show_all_artifacts = 0;
 int show_artifacts_timer = 0;
 int weapon_widget = 0;
+int center_inventory_cursor = 1;
 
 // Gameplay: Crosshair
 int crosshair_draw = 0;
@@ -239,6 +240,7 @@ int fix_map_errors = 1;
 int flip_levels = 0;
 int no_internal_demos = 0;
 int breathing = 0;
+int skip_unusable_artifact = 0;
 
 int selective_class = 0;
 int selective_skill = 2;
@@ -390,18 +392,20 @@ void D_BindVariables(void)
     M_BindIntVariable("floating_powerups",      &floating_powerups);
 
     // Gameplay: Status Bar
-    M_BindIntVariable("sbar_colored",           &sbar_colored);
-    M_BindIntVariable("sbar_colored_gem",       &sbar_colored_gem);
-    M_BindIntVariable("negative_health",        &negative_health);
-    M_BindIntVariable("show_all_artifacts",     &show_all_artifacts);
-    M_BindIntVariable("show_artifacts_timer",   &show_artifacts_timer);
-    M_BindIntVariable("weapon_widget",          &weapon_widget);
+    M_BindIntVariable("sbar_colored",            &sbar_colored);
+    M_BindIntVariable("sbar_colored_gem",        &sbar_colored_gem);
+    M_BindIntVariable("negative_health",         &negative_health);
+    M_BindIntVariable("show_all_artifacts",      &show_all_artifacts);
+    M_BindIntVariable("show_artifacts_timer",    &show_artifacts_timer);
+    M_BindIntVariable("weapon_widget",           &weapon_widget);
+    M_BindIntVariable("center_inventory_cursor", &center_inventory_cursor);
 
     // Gameplay: Gameplay
     M_BindIntVariable("fix_map_errors",         &fix_map_errors);
     M_BindIntVariable("flip_levels",            &flip_levels);
     M_BindIntVariable("no_internal_demos",      &no_internal_demos);
     M_BindIntVariable("breathing",              &breathing);
+    M_BindIntVariable("skip_unusable_artifact", &skip_unusable_artifact);
 
     // Gameplay: Crosshair
     M_BindIntVariable("crosshair_draw",         &crosshair_draw);
