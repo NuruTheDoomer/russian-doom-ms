@@ -35,6 +35,79 @@
 
 #define singleplayer (!demorecording && !demoplayback && !netgame)
 
+/**
+ * Macro for vanilla visual bug fix condition.
+ * It accounts for '-vanilla' cli param.
+ *
+ * Vanilla visual bug fixes should be wrapped in if statement with this macro as condition.
+ *
+ * @param option - Name of the config option.
+ *		  It should be true if the fix is enabled.
+ *		  And it should be false if the fix is disabled, i.e., vanilla behavior.
+ * @returns True - when fix should be enabled.
+ *			False - when fix should be disabled, i.e., vanilla behavior.
+ */
+#define vanilla_visual_bug_fix(option) (!vanillaparm && !strict_mode && singleplayer && (option))
+
+/**
+ * Macro for vanilla gameplay bug fix condition.
+ * It accounts for '-vanilla' cli param, the 'strict gameplay mode' option,
+ * demo playback/record and netgame
+ *
+ * Vanilla gameplay bug fixes should be wrapped in if statement with this macro as condition.
+ *
+ * @param option - Name of the config option.
+ *		  It should be true if the fix is enabled.
+ *		  And it should be false if the fix is disabled, i.e., vanilla behavior.
+ * @returns True - when fix should be enabled.
+ *			False - when fix should be disabled, i.e., vanilla behavior.
+ */
+#define vanilla_gameplay_bug_fix(option) (!vanillaparm && !strict_mode && singleplayer && (option))
+
+/**
+ * Macro for vanilla gameplay feature condition.
+ * It accounts for '-vanilla' cli param, the 'strict gameplay mode' option,
+ * demo playback/record and netgame
+ *
+ * Vanilla gameplay features that can be disabled should be wrapped in if statement with this macro as condition.
+ *
+ * @param option - Name of the config option.
+ *		  It should be true if the feature is enabled, i.e., vanilla behavior.
+ *		  And it should be false if the feature is disabled.
+ * @returns True - when feature should be enabled, i.e., vanilla behavior.
+ *			False - when feature should be disabled.
+ */
+#define vanilla_gameplay_feature(option) (vanillaparm || strict_mode || !singleplayer || (option))
+
+/**
+ * Macro for additional visual feature condition.
+ * It accounts for '-vanilla' cli param.
+ *
+ * Additional visual features should be wrapped in if statement with this macro as condition.
+ *
+ * @param option - Name of the config option.
+ *		  It should be true if the feature is enabled.
+ *		  And it should be false if the feature is disabled, i.e., vanilla behavior.
+ * @returns True - when feature should be enabled.
+ *			False - when feature should be disabled, i.e., vanilla behavior.
+ */
+#define visual_feature(option) (!vanillaparm && (option))
+
+/**
+ * Macro for additional gameplay feature condition.
+ * It accounts for '-vanilla' cli param, the 'strict gameplay mode' option,
+ * demo playback/record and netgame
+ *
+ * Additional gameplay features should be wrapped in if statement with this macro as condition.
+ *
+ * @param option - Name of the config option.
+ *		  It should be true if the feature is enabled.
+ *		  And it should be false if the feature is disabled, i.e., vanilla behavior.
+ * @returns True - when feature should be enabled.
+ *			False - when feature should be disabled, i.e., vanilla behavior.
+ */
+#define gameplay_feature(option) (!vanillaparm && !strict_mode && singleplayer && (option))
+
 void *crispy_realloc (void *ptr, size_t size);
 
 enum
@@ -330,7 +403,7 @@ extern int pistol_start;
 extern int breathing;
 extern int unlimited_lost_souls;
 extern int fast_quickload;
-extern int skip_unusable_artifact;
+extern int skip_unused_artifact;
 
 // Gameplay: Demos
 extern int demotimer;

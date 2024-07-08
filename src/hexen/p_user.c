@@ -1426,40 +1426,52 @@ void P_PlayerNextArtifact(player_t * player)
 
 void P_PlayerRemoveArtifact(player_t * player, int slot)
 {
-    int i;
-
     player->artifactCount--;
-    if (!(--player->inventory[slot].count))
-    {                           // Used last of a type - compact the artifact list
+    if(--player->inventory[slot].count != 0)
+        return;
+    // Used last of a type - compact the artifact list
+
+    // [Dasperal] if skip_unused_artifact option is enabled (vanilla) then
+    // don't change the selected artifact if it is not the one being removed
+    if(vanilla_gameplay_feature(skip_unused_artifact)
+    || player->readyArtifact == player->inventory[slot].type)
+    {
         player->readyArtifact = arti_none;
-        player->inventory[slot].type = arti_none;
-        for (i = slot + 1; i < player->inventorySlotNum; i++)
+    }
+    player->inventory[slot].type = arti_none;
+    for(int i = slot + 1; i < player->inventorySlotNum; i++)
+    {
+        player->inventory[i - 1] = player->inventory[i];
+    }
+    player->inventorySlotNum--;
+
+    if(player != &players[consoleplayer])
+        return;
+
+    // [Dasperal] if skip_unused_artifact option is enabled (vanilla) then
+    // don't change the selected artifact if it is not the one being removed
+    if(!vanilla_gameplay_feature(skip_unused_artifact) && slot > inv_ptr)
+        return;
+
+    // Set position markers and get next readyArtifact
+    inv_ptr--;
+    if(inv_ptr < 6)
+    {
+        curpos--;
+        if(curpos < 0)
         {
-            player->inventory[i - 1] = player->inventory[i];
-        }
-        player->inventorySlotNum--;
-        if (player == &players[consoleplayer])
-        {                       // Set position markers and get next readyArtifact
-            inv_ptr--;
-            if (inv_ptr < 6)
-            {
-                curpos--;
-                if (curpos < 0)
-                {
-                    curpos = 0;
-                }
-            }
-            if (inv_ptr >= player->inventorySlotNum)
-            {
-                inv_ptr = player->inventorySlotNum - 1;
-            }
-            if (inv_ptr < 0)
-            {
-                inv_ptr = 0;
-            }
-            player->readyArtifact = player->inventory[inv_ptr].type;
+            curpos = 0;
         }
     }
+    if(inv_ptr >= player->inventorySlotNum)
+    {
+        inv_ptr = player->inventorySlotNum - 1;
+    }
+    if(inv_ptr < 0)
+    {
+        inv_ptr = 0;
+    }
+    player->readyArtifact = player->inventory[inv_ptr].type;
 }
 
 //----------------------------------------------------------------------------
@@ -1492,7 +1504,7 @@ void P_PlayerUseArtifact(player_t * player, artitype_t arti)
                     ArtifactFlash = 4;
                 }
             }
-            else if(arti < arti_firstpuzzitem && (skip_unusable_artifact || vanillaparm || !singleplayer))
+            else if(arti < arti_firstpuzzitem && vanilla_gameplay_feature(skip_unused_artifact))
             {
                 // Unable to use artifact, advance pointer
                 P_PlayerNextArtifact(player);

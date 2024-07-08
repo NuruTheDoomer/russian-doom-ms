@@ -26,10 +26,8 @@ find_package(Python3 COMPONENTS Interpreter)
 
 cmake_dependent_option(RD_BUILD_PORTABLE "Build portable version with Windows like behavior (see COMPILING.MD)" OFF "NOT WIN32" OFF)
 
-# Hash suffix options
+# Git info options
 cmake_dependent_option(RD_GIT_NO_HASH "For Devs only! Don't run 'revision_check' at all" OFF "GIT_FOUND" ON)
-cmake_dependent_option(RD_GIT_NO_HASH_SUFFIX "For Devs only! Never append hash suffix to project version" OFF "NOT NO_GIT_HASH" ON)
-cmake_dependent_option(RD_GIT_FORCE_HASH_SUFFIX "For Devs only! Always append hash suffix to project version" OFF "NOT NO_GIT_HASH_SUFFIX" OFF)
 
 # Package related variables
 set(PACKAGE_TARNAME "russian-doom")
@@ -194,11 +192,6 @@ string(REPLACE " Doom" "" PACKAGE_PREFIX "${PROJECT_NAME}")
 string(REPLACE "doom" "" PROGRAM_PREFIX "${PACKAGE_TARNAME}")
 string(REPLACE "." ", " WINDOWS_RC_VERSION ${PROJECT_VERSION})
 
-# [Dasperal] RD_BUILD_VERSION_OVERWRITE variable is used on CI to replace version with git hash
-if(RD_BUILD_VERSION_OVERWRITE)
-    set(PROJECT_VERSION ${RD_BUILD_VERSION_OVERWRITE})
-endif()
-
 if(RD_COMPILE_DOOM)
     configure_file(src/doom/resource.rc.in src/doom/resource.rc @ONLY)
     list(APPEND COMPILE_MODULES "doom")
@@ -219,15 +212,8 @@ if(RD_GIT_NO_HASH)
     # Use a function to avoid accidentally messing the real variables
     configure_empty_git_info("cmake/git_info.h.in" "git_info.h")
 else()
-    if(RD_GIT_NO_HASH_SUFFIX)
-        set(HASH_SUFFIX "NO")
-    elseif(RD_GIT_FORCE_HASH_SUFFIX)
-        set(HASH_SUFFIX "FORCE")
-    else()
-        set(HASH_SUFFIX "AUTO")
-    endif()
     add_custom_target(revision_check
-        COMMAND "${CMAKE_COMMAND}" -P "\"${PROJECT_SOURCE_DIR}/cmake/UpdateRevision.cmake\"" "\"git_info.h\"" "\"${HASH_SUFFIX}\"" "${GIT_EXECUTABLE}"
+        COMMAND "${CMAKE_COMMAND}" -P "\"${PROJECT_SOURCE_DIR}/cmake/UpdateRevision.cmake\"" "${GIT_EXECUTABLE}" "\"git_info.h\""
         WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
     )
 endif()
@@ -251,5 +237,5 @@ if(WIN32)
     set(CPACK_ARCHIVE_COMPONENT_INSTALL OFF)
     set(CPACK_ARCHIVE_THREADS 0) # For Cmake 3.18+
 
-    include(Cpack)
+    include(CPack)
 endif()

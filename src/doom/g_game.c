@@ -1479,7 +1479,7 @@ void G_SecretExitLevel (void)
 void G_DoCompleted (void) 
 { 
     int i; 
-    extern int bex_pars[4][10], bex_cpars[32]; // [crispy] support [PARS] sections in BEX files
+    extern int bex_pars[7][10], bex_cpars[32]; // [crispy] support [PARS] sections in BEX files
 
     gameaction = ga_nothing; 
 
@@ -2463,9 +2463,25 @@ void G_RecordDemo (char *name)
     int     maxsize;
 
     usergame = false;
-    demoname_size = strlen(name) + 5;
-    demoname = Z_Malloc(demoname_size, PU_STATIC, NULL);
-    M_snprintf(demoname, demoname_size, "%s.lmp", name);
+
+    char* uc_filename = strdup(name);
+    M_ForceUppercase(uc_filename);
+    // [Dasperal] With Vanilla you have to specify the file without extension,
+    // but make that optional.
+    if(M_StringEndsWith(uc_filename, ".LMP"))
+    {
+        demoname_size = strlen(name) + 1;
+        demoname = Z_Malloc(demoname_size, PU_STATIC, NULL);
+        M_StringCopy(demoname, name, demoname_size);
+    }
+    else
+    {
+        demoname_size = strlen(name) + 5;
+        demoname = Z_Malloc(demoname_size, PU_STATIC, NULL);
+        M_snprintf(demoname, demoname_size, "%s.lmp", name);
+    }
+    free(uc_filename);
+
     maxsize = 0x20000;
 
     //!

@@ -88,12 +88,8 @@
 // [Dasperal] d_name.h var definition
 // -----------------------------------------------------------------------------
 char* RD_Project_Name = PACKAGE_PREFIX " Doom";
-char* RD_Project_String = PACKAGE_PREFIX " Doom " PACKAGE_VERSION;
-#if GIT_TAG_DOOM
-char* RD_Project_Version = PACKAGE_VERSION;
-#else
-char* RD_Project_Version = PACKAGE_VERSION GIT_SHA_SUFFIX;
-#endif
+char* RD_Project_String = PACKAGE_PREFIX " Doom " PACKAGE_VERSION GIT_VERSION_SUFFIX;
+char* RD_Project_Version = PACKAGE_VERSION GIT_DISPLAY_VERSION_SUFFIX;
 char* RD_Project_TarName = PROGRAM_PREFIX "doom";
 char* ID_Project_TarName = "inter-doom"; // ID config compatibility
 GameType_t RD_GameType = gt_Doom;
@@ -284,6 +280,9 @@ int demotimerdir = 0;
 int demobar = 0;
 int no_internal_demos = 0;
 
+
+// Dummy
+int skip_unused_artifact;
 
 void D_ConnectNetGame(void);
 void D_CheckNetGame(void);
@@ -2690,7 +2689,7 @@ static void D_Endoom(void)
 	// [JN] Use original, replacable ENDOOM screen for English language.
     // Use various unreplacable translated screens for Russian language.
 
-    if (english_language)
+    if(english_language || W_CheckNumForName("FREEDOOM") >= 0 || W_CheckNumForName("FREEDM") >= 0)
     {
         endoom = W_CacheLumpName(DEH_String("ENDOOM"), PU_STATIC);
     }

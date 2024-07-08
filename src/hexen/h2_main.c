@@ -102,12 +102,8 @@ extern int alwaysRun;
 // [Dasperal] d_name.h var definition
 // -----------------------------------------------------------------------------
 char* RD_Project_Name = PACKAGE_PREFIX " Hexen";
-char* RD_Project_String = PACKAGE_PREFIX " Hexen " PACKAGE_VERSION;
-#if GIT_TAG_HEXEN
-char* RD_Project_Version = PACKAGE_VERSION;
-#else
-char* RD_Project_Version = PACKAGE_VERSION GIT_SHA_SUFFIX;
-#endif
+char* RD_Project_String = PACKAGE_PREFIX " Hexen " PACKAGE_VERSION GIT_VERSION_SUFFIX;
+char* RD_Project_Version = PACKAGE_VERSION GIT_DISPLAY_VERSION_SUFFIX;
 char* RD_Project_TarName = PROGRAM_PREFIX "hexen";
 char* ID_Project_TarName = "inter-hexen"; // ID config compatibility
 GameType_t RD_GameType = gt_Hexen;
@@ -205,6 +201,9 @@ int stats_color = 1;
 // Sound
 int snd_monomode = 0;
 
+// Gameplay: Game Mechanics
+int strict_mode = 0;
+
 // Gameplay: Graphical
 int brightmaps = 1;
 int fake_contrast = 0;
@@ -240,7 +239,11 @@ int fix_map_errors = 1;
 int flip_levels = 0;
 int no_internal_demos = 0;
 int breathing = 0;
-int skip_unusable_artifact = 0;
+int skip_unused_artifact = 0;
+int pistol_start = 0;
+
+// [Dasperal] Vanila bugs fixes
+int heresiarch_zero_cast_time_fix = 1;
 
 int selective_class = 0;
 int selective_skill = 2;
@@ -405,7 +408,11 @@ void D_BindVariables(void)
     M_BindIntVariable("flip_levels",            &flip_levels);
     M_BindIntVariable("no_internal_demos",      &no_internal_demos);
     M_BindIntVariable("breathing",              &breathing);
-    M_BindIntVariable("skip_unusable_artifact", &skip_unusable_artifact);
+    M_BindIntVariable("skip_unused_artifact",   &skip_unused_artifact);
+    M_BindIntVariable("pistol_start",   &pistol_start);
+
+    // [Dasperal] Vanila bugs fixes
+    M_BindIntVariable("heresiarch_zero_cast_time_fix", &heresiarch_zero_cast_time_fix);
 
     // Gameplay: Crosshair
     M_BindIntVariable("crosshair_draw",         &crosshair_draw);

@@ -83,15 +83,15 @@ jobs:
 #            cmake_gen: "Visual Studio 16 2019" # Visual Studio 17 2022
 #            cmake_opts: "-T v141_xp -A Win32"
 #            build_suffix: "x86-msvc"
-          -
-            display_name: "Windows | x64 | MSVC"
-            runner: "windows-2022"
-            shell: "bash"
-            msvc_triplet: "x64-windows"
-            compiler_name: "cl"
-            cmake_gen: "Visual Studio 17 2022"
-            cmake_opts: "-A x64"
-            build_suffix: "x64-msvc"
+#          -
+#            display_name: "Windows | x64 | MSVC"
+#            runner: "windows-2022"
+#            shell: "bash"
+#            msvc_triplet: "x64-windows"
+#            compiler_name: "cl"
+#            cmake_gen: "Visual Studio 17 2022"
+#            cmake_opts: "-A x64"
+#            build_suffix: "x64-msvc"
           -
             display_name: "Linux | x64 | GCC"
             runner: "ubuntu-22.04"
@@ -151,7 +151,7 @@ jobs:
         if: |
           runner.os == 'Windows' &&
           matrix.config.compiler_name == 'cl'
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           script: |
             core.exportVariable('ACTIONS_CACHE_URL', process.env.ACTIONS_CACHE_URL || '');
@@ -177,7 +177,7 @@ jobs:
           sudo apt-get install ${{ matrix.config.compiler_name }} gdb ninja-build python3 cmake \
                                libsdl2-dev libsdl2-net-dev libsdl2-mixer-dev libsamplerate-dev
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -190,17 +190,13 @@ jobs:
           then
               msvc_cmake_toolchain="-D CMAKE_TOOLCHAIN_FILE=$VCPKG_INSTALLATION_ROOT/scripts/buildsystems/vcpkg.cmake"
           fi
-          rev_number=$(git rev-list --count HEAD)
           cmake -G "${{ matrix.config.cmake_gen }}" ${{ matrix.config.cmake_opts }} \
                 $msvc_cmake_toolchain \
-                -D RD_BUILD_VERSION_OVERWRITE="r$rev_number" \
-                -D RD_GIT_FORCE_HASH_SUFFIX=ON \
                 -D CMAKE_BUILD_TYPE=RelWithDebInfo \
                 -D RD_TEST_WITH_GDB="ON"\
                 -S . -B build
-          sha_short=$(echo ${{ github.sha }} | cut -c1-7)
-          echo "sha_short=$sha_short" >> $GITHUB_OUTPUT
-          echo "rev_number=r$rev_number" >> $GITHUB_OUTPUT
+          git_version=$(cmake -P ./cmake/UpdateRevision.cmake "git" 2>&1)
+          echo "version=$git_version" >> $GITHUB_OUTPUT
 
       - name: Build
         run: |
@@ -236,7 +232,7 @@ jobs:
           github.event_name == 'push' &&
           github.ref == 'refs/heads/master' &&
           runner.os == 'Windows'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          name: russian-doom-${{ steps.configure.outputs.rev_number }}-${{ steps.configure.outputs.sha_short }}-windows-${{ matrix.config.build_suffix }}
+          name: russian-doom-${{ steps.configure.outputs.version }}-windows-${{ matrix.config.build_suffix }}
           path: ./build/install/

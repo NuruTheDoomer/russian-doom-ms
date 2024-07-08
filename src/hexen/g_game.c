@@ -1219,17 +1219,53 @@ void G_PlayerExitMap(int playerNumber)
     }
     else
     {
-        if (P_GetMapCluster(gamemap) != P_GetMapCluster(LeaveMap))
-        {                       // Entering new cluster
+        // Entering new cluster
+        if(P_GetMapCluster(gamemap) != P_GetMapCluster(LeaveMap))
+        {
             // Strip all keys
             player->keys = 0;
 
-            // Strip flight artifact
-            for (i = 0; i < 25; i++)
+            // Reset player in wandstart mode
+            if(singleplayer && !vanillaparm && pistol_start)
             {
-                player->powers[pw_flight] = 0;
-                P_PlayerUseArtifact(player, arti_fly);
+                memset(player->armorpoints, 0, sizeof(player->armorpoints));
+                memset(player->weaponowned, 0, sizeof(player->weaponowned));
+                memset(player->mana, 0, sizeof(player->mana));
+                player->health = player->mo->health = MAXHEALTH;
+                player->pieces = 0;
+                player->readyweapon = player->pendingweapon = player->mo->special1.i = WP_FIRST;
+                player->weaponowned[WP_FIRST] = true;
+
+                // Remove all non-puzzle items
+                // Keep puzzle items for wad compatibility
+                for(i = 0; i < player->inventorySlotNum; i++)
+                {
+                    if(player->inventory[i].type < arti_firstpuzzitem)
+                    {
+                        // Set count to 1 because P_PlayerRemoveArtifact removes only 1 artifact
+                        player->inventory[i].count = 1;
+                        P_PlayerRemoveArtifact(player, i);
+                        // inventory array is shifted when artifact is removed, so stay on the same slot
+                        i--;
+                    }
+                }
             }
+            else
+            {
+                // Remove flight artifact
+                for(i = 0; i < player->inventorySlotNum; i++)
+                {
+                    if(player->inventory[i].type == arti_fly)
+                    {
+                        // Set count to 1 because P_PlayerRemoveArtifact removes only 1 artifact
+                        player->inventory[i].count = 1;
+                        P_PlayerRemoveArtifact(player, i);
+                        break;
+                    }
+                }
+            }
+
+            // Strip flight powerup
             player->powers[pw_flight] = 0;
         }
     }
@@ -2155,9 +2191,25 @@ void G_RecordDemo(skill_t skill, int numplayers, int episode, int map,
 
     G_InitNew(skill, episode, map);
     usergame = false;
-    demoname_size = strlen(name) + 5;
-    demoname = Z_Malloc(demoname_size, PU_STATIC, NULL);
-    M_snprintf(demoname, demoname_size, "%s.lmp", name);
+
+    char* uc_filename = strdup(name);
+    M_ForceUppercase(uc_filename);
+    // [Dasperal] With Vanilla you have to specify the file without extension,
+    // but make that optional.
+    if(M_StringEndsWith(uc_filename, ".LMP"))
+    {
+        demoname_size = strlen(name) + 1;
+        demoname = Z_Malloc(demoname_size, PU_STATIC, NULL);
+        M_StringCopy(demoname, name, demoname_size);
+    }
+    else
+    {
+        demoname_size = strlen(name) + 5;
+        demoname = Z_Malloc(demoname_size, PU_STATIC, NULL);
+        M_snprintf(demoname, demoname_size, "%s.lmp", name);
+    }
+    free(uc_filename);
+
     maxsize = 0x20000;
 
     //!

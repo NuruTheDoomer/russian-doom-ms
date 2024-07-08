@@ -247,7 +247,8 @@ static void M_RD_FixMapErrors();
 static void M_RD_FlipLevels();
 static void M_RD_NoDemos();
 static void M_RD_Breathing();
-static void M_RD_SkipUnusableArtifact();
+static void M_RD_SkipUnusedArtifact();
+static void M_RD_WandStart();
 
 // Level Select (1)
 static void DrawLevelSelect1Menu(void);
@@ -1319,14 +1320,14 @@ MENU_STATIC_PAGED(Gameplay2Menu,
 
 static MenuItem_t Gameplay3Items[] = {
     I_SWITCH("IMITATE PLAYER'S BREATHING:", "BVBNFWBZ LS[FYBZ BUHJRF:",        M_RD_Breathing),      // ИМИТАЦИЯ ДЫХАНИЯ ИГРОКА
-    I_SWITCH("SKIP UNUSABLE ARTIFACT:",     "CRBG YTGHBVTYBVJUJ FHNTAFRNF:",   M_RD_SkipUnusableArtifact), // СКИП НЕПРИМЕНИМОГО АРТEФАКТА
+    I_SWITCH("SKIP UNUSED ARTIFACT:",       "CRBG YTGHBVTYTYYJUJ FHNTAFRNF:",  M_RD_SkipUnusedArtifact), // СКИП НЕПРИМЕНЁННОГО АРТEФАКТА
+    I_SWITCH("WAND START GAME MODE:",       NULL, /* [JN] Joint EN/RU string*/ M_RD_WandStart),    // РЕЖИМ ИГРЫ "WAND START"
     I_TITLE( "CROSSHAIR",       "GHBWTK"), // ПРИЦЕЛ
     I_SWITCH("DRAW CROSSHAIR:", "JNJ,HF;FNM GHBWTK:",  M_RD_CrossHairDraw),    // ОТОБРАЖАТЬ ПРИЦЕЛ
     I_LRFUNC("SHAPE:",          "AJHVF:",              M_RD_CrossHairShape),   // ФОРМА
     I_SWITCH("INDICATION:",     "BYLBRFWBZ:",          M_RD_CrossHairType),    // ИНДИКАЦИЯ
     I_SWITCH("INCREASED SIZE:", "EDTKBXTYYSQ HFPVTH:", M_RD_CrossHairScale),   // УВЕЛИЧЕННЫЙ РАЗМЕР
     I_LRFUNC("OPACITY:",        "YTGHJPHFXYJCNM:",     M_RD_CrossHairOpacity), // НЕПРОЗРАЧНОСТЬ
-    I_EMPTY,
     I_EMPTY,
     I_EMPTY,
     I_EMPTY,
@@ -1399,7 +1400,7 @@ static MenuItem_t Level2Items_F[] = {
     I_SWITCH("BLADE OF QUIETUS:",      "KTPDBT GJCKTLYTUJ LJDJLF:",  M_RD_SelectiveWp_P_2), // ЛЕЗВИЕ ПОСЛЕДНЕГО ДОВОДА
     I_TITLE( "MANA",                   "VFYF"), // МАНА
     I_LRFUNC("BLUE:",                  "CBYZZ:",                     M_RD_SelectiveAmmo_0), // СИНЯЯ
-    I_LRFUNC("GREEN:",                 "PTK~YFZ:",                   M_RD_SelectiveAmmo_1), // ЗЕЛЁНАЯ
+    I_LRFUNC("GREEN:",                 "PTKTYFZ:",                   M_RD_SelectiveAmmo_1), // ЗЕЛЁНАЯ
     I_TITLE( "ARTIFACTS",              "FHNTAFRNS"), // АРТЕФАКТЫ
     I_LRFUNC("QUARTZ FLASK:",          "RDFHWTDSQ AKFRJY:",          M_RD_SelectiveArti_0), // КВАРЦЕВЫЙ ФЛАКОН
     I_LRFUNC("MYSTIC URN:",            "VBCNBXTCRFZ EHYF:",          M_RD_SelectiveArti_1), // МИСТИЧЕСКАЯ УРНА
@@ -1429,7 +1430,7 @@ static MenuItem_t Level2Items_C[] = {
     I_SWITCH("HEAD OF WRAITHVERGE:",  "YFDTHITYBT ;TPKF LE[JD:", M_RD_SelectiveWp_P_2), // НАВЕРШЕНИЕ ЖЕЗЛА ДУХОВ
     I_TITLE( "MANA",                  "VFYF"), // МАНА
     I_LRFUNC("BLUE:",                 "CBYZZ:",                  M_RD_SelectiveAmmo_0), // СИНЯЯ
-    I_LRFUNC("GREEN:",                "PTK~YFZ:",                M_RD_SelectiveAmmo_1), // ЗЕЛЁНАЯ
+    I_LRFUNC("GREEN:",                "PTKTYFZ:",                M_RD_SelectiveAmmo_1), // ЗЕЛЁНАЯ
     I_TITLE( "ARTIFACTS",             "FHNTAFRNS"), // АРТЕФАКТЫ
     I_LRFUNC("QUARTZ FLASK:",         "RDFHWTDSQ AKFRJY:",       M_RD_SelectiveArti_0), // КВАРЦЕВЫЙ ФЛАКОН
     I_LRFUNC("MYSTIC URN:",           "VBCNBXTCRFZ EHYF:",       M_RD_SelectiveArti_1), // МИСТИЧЕСКАЯ УРНА
@@ -1459,7 +1460,7 @@ static MenuItem_t Level2Items_M[] = {
     I_SWITCH("KNOB OF BLOODSCOURGE:",   "YF,FKLFIYBR RHJDFDJUJ ,BXF:", M_RD_SelectiveWp_P_2), // НАБАЛДАШНИК КРОВАВОГО БИЧА
     I_TITLE( "MANA",                    "VFYF"), // МАНА
     I_LRFUNC("BLUE:",                   "CBYZZ:",                      M_RD_SelectiveAmmo_0), // СИНЯЯ
-    I_LRFUNC("GREEN:",                  "PTK~YFZ:",                    M_RD_SelectiveAmmo_1), // ЗЕЛЁНАЯ
+    I_LRFUNC("GREEN:",                  "PTKTYFZ:",                    M_RD_SelectiveAmmo_1), // ЗЕЛЁНАЯ
     I_TITLE( "ARTIFACTS",               "FHNTAFRNS"), // АРТЕФАКТЫ
     I_LRFUNC("QUARTZ FLASK:",           "RDFHWTDSQ AKFRJY:",           M_RD_SelectiveArti_0), // КВАРЦЕВЫЙ ФЛАКОН
     I_LRFUNC("MYSTIC URN:",             "VBCNBXTCRFZ EHYF:",           M_RD_SelectiveArti_1), // МИСТИЧЕСКАЯ УРНА
@@ -4734,16 +4735,21 @@ static void DrawGameplay3Menu(void)
         RD_M_DrawTextSmallENG(breathing ? "ON" : "OFF", 224 + wide_delta, 32,
                               breathing ? CR_GREEN : CR_RED);
 
-        // Skip unusable artifact
-        RD_M_DrawTextSmallENG(skip_unusable_artifact ? "ON" : "OFF", 202 + wide_delta, 42,
-                              skip_unusable_artifact ? CR_GREEN : CR_RED);
+        // Skip unused artifact
+        RD_M_DrawTextSmallENG(skip_unused_artifact ? "ON" : "OFF", 187 + wide_delta, 42,
+                              skip_unused_artifact ? CR_GREEN : CR_RED);
+
+        // Wand start
+        RD_M_DrawTextSmallENG(pistol_start ? "ON" : "OFF",
+                              193 + wide_delta, 52,
+                              pistol_start ? CR_GREEN : CR_RED);
 
         //
         // CROSSHAIR
         //
 
         // Draw crosshair
-        RD_M_DrawTextSmallENG(crosshair_draw ? "ON" : "OFF", 150 + wide_delta, 62,
+        RD_M_DrawTextSmallENG(crosshair_draw ? "ON" : "OFF", 150 + wide_delta, 72,
                               crosshair_draw ? CR_GREEN : CR_RED);
 
         // Shape
@@ -4753,14 +4759,14 @@ static void DrawGameplay3Menu(void)
                               crosshair_shape == 4 ? "ANGLE" :
                               crosshair_shape == 5 ? "TRIANGLE" :
                               crosshair_shape == 6 ? "DOT" : "CROSS",
-                              84 + wide_delta, 72, CR_GREEN);
+                              84 + wide_delta, 82, CR_GREEN);
 
         // Indication
-        RD_M_DrawTextSmallENG(crosshair_type == 1 ? "HEALTH" : "STATIC",  111 + wide_delta, 82,
+        RD_M_DrawTextSmallENG(crosshair_type == 1 ? "HEALTH" : "STATIC",  111 + wide_delta, 92,
                               crosshair_type ? CR_GREEN : CR_RED);
 
         // Increased size
-        RD_M_DrawTextSmallENG(crosshair_scale ? "ON" : "OFF", 146 + wide_delta, 92,
+        RD_M_DrawTextSmallENG(crosshair_scale ? "ON" : "OFF", 146 + wide_delta, 102,
                               crosshair_scale ? CR_GREEN : CR_RED);
     }
     else
@@ -4770,15 +4776,22 @@ static void DrawGameplay3Menu(void)
                               breathing ? CR_GREEN : CR_RED);
 
         // Скип неприменимого артефакта
-        RD_M_DrawTextSmallRUS(skip_unusable_artifact ? "DRK" : "DSRK", 253 + wide_delta, 42,
-                              skip_unusable_artifact ? CR_GREEN : CR_RED);
+        RD_M_DrawTextSmallRUS(skip_unused_artifact ? "DRK" : "DSRK", 260 + wide_delta, 42,
+                              skip_unused_artifact ? CR_GREEN : CR_RED);
+
+        // Режим игры "Wand start"
+        RD_M_DrawTextSmallRUS("HT;BV BUHS", 36 + wide_delta, 52, CR_NONE);
+        RD_M_DrawTextSmallENG("\"WAND START\":", 120 + wide_delta, 52, CR_NONE);
+        RD_M_DrawTextSmallRUS(pistol_start ? "DRK" : "DSRK",
+                              217 + wide_delta, 52,
+                              pistol_start ? CR_GREEN : CR_RED);
 
         //
         // ПРИЦЕЛ
         //
 
         // Отображать прицел
-        RD_M_DrawTextSmallRUS(crosshair_draw ? "DRK" : "DSRK", 175 + wide_delta, 62,
+        RD_M_DrawTextSmallRUS(crosshair_draw ? "DRK" : "DSRK", 175 + wide_delta, 72,
                               crosshair_draw ? CR_GREEN : CR_RED);
 
         // Форма
@@ -4789,30 +4802,30 @@ static void DrawGameplay3Menu(void)
                               crosshair_shape == 5 ? "NHTEUJKMYBR" :  // ТРЕУГОЛЬНИК
                               crosshair_shape == 6 ? "NJXRF" :        // ТОЧКА
                               "RHTCN",         // КРЕСТ
-                              87 + wide_delta, 72, CR_GREEN);
+                              87 + wide_delta, 82, CR_GREEN);
 
         // Индикация
         RD_M_DrawTextSmallRUS(crosshair_type == 1 ? "PLJHJDMT" : // ЗДОРОВЬЕ
                               "CNFNBXYFZ", // СТАТИЧНАЯ
-                              111 + wide_delta, 82, crosshair_type ? CR_GREEN : CR_RED);
+                              111 + wide_delta, 92, crosshair_type ? CR_GREEN : CR_RED);
 
         // Увеличенный размер
-        RD_M_DrawTextSmallRUS(crosshair_scale ? "DRK" : "DSRK", 181 + wide_delta, 92,
+        RD_M_DrawTextSmallRUS(crosshair_scale ? "DRK" : "DSRK", 181 + wide_delta, 102,
                               crosshair_scale ? CR_GREEN : CR_RED);
     }
 
     // Draw crosshair background.
-    V_DrawPatch(235 + wide_delta, 73, W_CacheLumpName("XHAIRBOX", PU_CACHE), NULL);
+    V_DrawPatch(235 + wide_delta, 83, W_CacheLumpName("XHAIRBOX", PU_CACHE), NULL);
     // Colorize crosshair depending on it's type.
     Crosshair_Colorize_inMenu();
     // Draw crosshair preview.
     if (crosshair_scale)
     {
-        V_DrawPatch(250 + wide_delta, 88, CrosshairPatch, CrosshairOpacity);
+        V_DrawPatch(250 + wide_delta, 98, CrosshairPatch, CrosshairOpacity);
     }
     else
     {
-        V_DrawPatchUnscaled(500 + wide_delta*2, 176, CrosshairPatch, CrosshairOpacity);
+        V_DrawPatchUnscaled(500 + wide_delta*2, 196, CrosshairPatch, CrosshairOpacity);
     }
     // Clear colorization.
     dp_translation = NULL;
@@ -4826,8 +4839,8 @@ static void DrawGameplay3Menu(void)
                           crosshair_opacity == 5 ? "70%" :
                           crosshair_opacity == 6 ? "80%" :
                           crosshair_opacity == 7 ? "90%" : "100%",
-                          (english_language ? 95 : 159) + wide_delta,
-                          102, CR_GRAY);
+                          (english_language ? 95 : 149) + wide_delta,
+                          112, CR_GRAY);
 }
 
 static void M_RD_FixMapErrors()
@@ -4853,9 +4866,14 @@ static void M_RD_Breathing()
     breathing ^= 1;
 }
 
-static void M_RD_SkipUnusableArtifact()
+static void M_RD_SkipUnusedArtifact()
 {
-    skip_unusable_artifact ^= 1;
+    skip_unused_artifact ^= 1;
+}
+
+static void M_RD_WandStart()
+{
+    pistol_start ^= 1;
 }
 
 //---------------------------------------------------------------------------
@@ -5873,7 +5891,7 @@ void M_RD_BackToDefaults_Recommended (void)
 
     // Controls
     mouseSensitivity   = 5;
-    mlook              = 0; players[consoleplayer].centering = true;
+    mlook              = true;
     mouse_acceleration = 2.0F;
     mouse_threshold    = 10;
     novert             = 1;
@@ -5899,7 +5917,9 @@ void M_RD_BackToDefaults_Recommended (void)
     show_all_artifacts   = 0;
     show_artifacts_timer = 0;
     weapon_widget        = 0;
-    skip_unusable_artifact = 0;
+    skip_unused_artifact = 0;
+    pistol_start = 0;
+    heresiarch_zero_cast_time_fix = 1;
     // Gameplay (4)
     crosshair_draw       = 0;
     crosshair_shape      = 0;
@@ -5991,7 +6011,7 @@ static void M_RD_BackToDefaults_Original(void)
 
     // Controls
     mouseSensitivity   = 5;
-    mlook              = 0; players[consoleplayer].centering = true;
+    mlook              = false; players[consoleplayer].centering = true;
     mouse_acceleration = 2.0F;
     mouse_threshold    = 10;
     novert             = 1;
@@ -6017,7 +6037,9 @@ static void M_RD_BackToDefaults_Original(void)
     show_all_artifacts   = 0;
     show_artifacts_timer = 0;
     weapon_widget        = 0;
-    skip_unusable_artifact = 1;
+    skip_unused_artifact = 1;
+    pistol_start = 0;
+    heresiarch_zero_cast_time_fix = 0;
     // Gameplay (4)
     crosshair_draw       = 0;
     crosshair_shape      = 0;
